@@ -10,15 +10,29 @@ const PlantSchema = new mongoose.Schema({
   disadvantages: [String],
   sideEffects: String,
   
-  // ✅ NEW FIELD ADDED:
+  // ✅ Field: Jo aapne add kiya tha
   partsUsed: { type: String }, // e.g., "Leaves, Roots"
 
   images: [String],
   selected3DImageIndex: { type: Number, default: 0 },
   
-  // ... baaki fields waise hi rahenge
-  addedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  isApproved: { type: Boolean, default: true },
+  // ✅ Field: Kis User ne request bheji hai
+  addedBy: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User' 
+  },
+
+  // ✅ Field: Approval Status
+  // Default 'false' rakha hai taaki pehle admin check kare
+  isApproved: { type: Boolean, default: false }, 
+
+  // ✅ NEW FIELD: Kis Admin ne Approve kiya (Jo aapko chahiye tha)
+  approvedBy: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User',
+    default: null
+  },
+
   createdAt: { type: Date, default: Date.now }
 });
 

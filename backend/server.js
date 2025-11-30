@@ -4,10 +4,10 @@ const cors = require('cors');
 const path = require('path'); 
 const connectDB = require('./db');
 
-// ✅ Import Routes (Ye missing the isliye error aa raha tha)
+// Import Routes
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
-const plantRoutes = require('./routes/plants');
+const plantRoutes = require('./routes/Plant');   // ✔ CORRECT
 
 const app = express();
 
@@ -15,7 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
-// ✅ Make Images Public
+// Make Images Public
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // Connect to MongoDB
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
   res.send('Virtual Herbal Garden - Backend is running 🚀');
 });
 
-// ✅ Use API Routes
+// Use API Routes
 app.use('/api/plants', plantRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/auth', authRoutes);

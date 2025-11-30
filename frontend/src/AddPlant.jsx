@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Leaf, Upload, Save, ArrowLeft, CheckCircle, AlertCircle, MapPin, Activity } from 'lucide-react';
+import { Leaf, Upload, Save, ArrowLeft, CheckCircle, AlertCircle, MapPin, Activity, Layers } from 'lucide-react';
 
 function AddPlant() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   
-  // Form Data State
+  // States
   const [formData, setFormData] = useState({
     name: '', botanicalName: '', description: '', region: '',
-    uses: '', advantages: '', disadvantages: '', sideEffects: ''
+    uses: '', advantages: '', disadvantages: '', sideEffects: '',
+    partsUsed: '', category: 'General' // ✅ Added new fields
   });
   
   const [selectedFiles, setSelectedFiles] = useState([]); 
@@ -19,6 +20,8 @@ function AddPlant() {
 
   // ✅ IP Address (PC Testing)
   const BASE_URL = 'http://localhost:5000'; 
+
+  const categories = ["General", "Immunity", "Skin Care", "Digestion", "Respiratory", "Heart Health"];
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,14 +44,18 @@ function AddPlant() {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      // 1. User Data nikaalo (Direct LocalStorage se)
-      const storedUser = localStorage.getItem('user');
-      
-      // ✅ Yahan variable ka naam 'userObj' hai
-      const userObj = storedUser ? JSON.parse(storedUser) : null; 
+    // 1. Token Check (Fix for 401 Error)
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert("Please Login First!");
+        navigate('/login');
+        return;
+    }
 
-      // 2. Role nikaalo
+    try {
+      // 2. User Data nikaalo
+      const storedUser = localStorage.getItem('user');
+      const userObj = storedUser ? JSON.parse(storedUser) : null; 
       const userRole = userObj ? userObj.role : 'user';
 
       // 3. Data Prepare karo
@@ -62,12 +69,14 @@ function AddPlant() {
       data.append('selected3DIndex', selectedIndex);
       data.append('role', userRole);
 
-      // 4. Server ko bhejo
+      // 4. Server ko bhejo (With Headers)
       await axios.post(`${BASE_URL}/api/plants`, data, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+        headers: { 
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}` // ✅ TOKEN ADDED HERE
+        }
       });
       
-      // ✅ FIX: Ab hum 'userObj' check kar rahe hain (currentUser nahi)
       if (userObj && userObj.role === 'admin') {
         alert('🌱 Plant Added & Approved! (Admin Mode)');
       } else {
@@ -98,6 +107,8 @@ function AddPlant() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+          
+          {/* Row 1: Names */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Plant Name</label>
@@ -109,25 +120,40 @@ function AddPlant() {
             </div>
           </div>
 
+          {/* Row 2: Category & Region */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+             <div>
+               <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+               <select name="category" onChange={handleChange} className="w-full p-3 border rounded-xl outline-none bg-white">
+                 {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+               </select>
+             </div>
              <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Region</label>
               <input required name="region" onChange={handleChange} placeholder="e.g. India" className="w-full p-3 border rounded-xl outline-none" />
             </div>
+          </div>
+
+          {/* Row 3: Uses & Parts Used */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+             <div>
+               <label className="block text-sm font-medium text-gray-700 mb-1">Parts Used</label>
+               <input required name="partsUsed" onChange={handleChange} placeholder="e.g. Leaves, Roots" className="w-full p-3 border rounded-xl outline-none" />
+             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Uses</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Uses (Comma Separated)</label>
               <input required name="uses" onChange={handleChange} placeholder="Cough, Cold" className="w-full p-3 border rounded-xl outline-none" />
             </div>
           </div>
 
           <div>
-             <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-             <textarea required name="description" rows="3" onChange={handleChange} className="w-full p-3 border rounded-xl outline-none"></textarea>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+              <textarea required name="description" rows="3" onChange={handleChange} className="w-full p-3 border rounded-xl outline-none"></textarea>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <textarea name="advantages" onChange={handleChange} placeholder="Advantages" className="w-full p-3 border border-green-200 bg-green-50 rounded-xl outline-none"></textarea>
-            <textarea name="disadvantages" onChange={handleChange} placeholder="Disadvantages" className="w-full p-3 border border-red-200 bg-red-50 rounded-xl outline-none"></textarea>
+            <textarea name="advantages" onChange={handleChange} placeholder="Advantages (Comma Separated)" className="w-full p-3 border border-green-200 bg-green-50 rounded-xl outline-none"></textarea>
+            <textarea name="disadvantages" onChange={handleChange} placeholder="Disadvantages (Comma Separated)" className="w-full p-3 border border-red-200 bg-red-50 rounded-xl outline-none"></textarea>
           </div>
 
           <input name="sideEffects" onChange={handleChange} placeholder="Side Effects" className="w-full p-3 border border-orange-200 rounded-xl outline-none" />

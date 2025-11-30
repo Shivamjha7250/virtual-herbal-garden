@@ -139,18 +139,19 @@ function Home() {
                 <Search className="absolute right-3 top-2.5 text-gray-500" size={18} />
               </div>
 
-              {/* ✅ LOGIN / USER BUTTONS (AB YE PAKKA DIKHEGA) */}
+              {/* ✅ USER LOGGED IN BUTTONS */}
               {user && user.name ? (
                 <div className="flex items-center gap-2">
                   
-                  {/* Add Plant (Sirf Admin ke liye) */}
-                  {user.role === 'admin' && (
+                  {/* ✅ CHANGE 1: ADD PLANT BUTTON (Ab Sabke liye Visible hai) */}
+                  {/* Pehle yahan 'user.role === admin' tha, ab sirf 'user' hai */}
+                  {user && (
                     <button onClick={() => navigate('/add')} className="bg-yellow-400 text-yellow-900 p-2 rounded-full hover:bg-yellow-300 shadow-md" title="Add Plant">
                       <PlusCircle size={20}/>
                     </button>
                   )}
 
-                  {/* Approvals Button (Sirf Admin ke liye) */}
+                  {/* ✅ Admin Panel Button (Yeh sirf Admin dekhega) */}
                   {user.role === 'admin' && (
                     <button onClick={() => navigate('/admin')} className="bg-white text-green-800 px-3 py-1.5 rounded-full font-bold text-sm hover:bg-gray-100">
                       🛡️ Admin
@@ -168,7 +169,7 @@ function Home() {
                   </button>
                 </div>
               ) : (
-                // ✅ LOGIN BUTTON (No 'hidden' class - Always Visible)
+                // ✅ LOGIN BUTTON
                 <button 
                   onClick={() => navigate('/login')} 
                   className="bg-white text-green-700 px-5 py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-md whitespace-nowrap"
