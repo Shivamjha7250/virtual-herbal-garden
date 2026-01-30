@@ -7,7 +7,7 @@ const connectDB = require('./db');
 // Import Routes
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
-const plantRoutes = require('./routes/Plant');   // ✔ CORRECT
+const plantRoutes = require('./routes/Plant'); 
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
 // Make Images Public
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Connect to MongoDB
 connectDB();

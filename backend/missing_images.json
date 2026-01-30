@@ -1,0 +1,674 @@
+[
+  {
+    "plant": "Aloe Vera",
+    "file": "Aloe_Vera_4.jpg"
+  },
+  {
+    "plant": "Ginger",
+    "file": "Ginger_1.jpg"
+  },
+  {
+    "plant": "Ginger",
+    "file": "Ginger_3.jpg"
+  },
+  {
+    "plant": "Peppermint",
+    "file": "Peppermint_3.jpg"
+  },
+  {
+    "plant": "Lemongrass",
+    "file": "Lemongrass_2.jpg"
+  },
+  {
+    "plant": "Cinnamon",
+    "file": "Cinnamon_4.jpg"
+  },
+  {
+    "plant": "Coriander",
+    "file": "Coriander_1.jpg"
+  },
+  {
+    "plant": "Coriander",
+    "file": "Coriander_2.jpg"
+  },
+  {
+    "plant": "Coriander",
+    "file": "Coriander_3.jpg"
+  },
+  {
+    "plant": "Fenugreek",
+    "file": "Fenugreek_3.jpg"
+  },
+  {
+    "plant": "Arjuna",
+    "file": "Arjuna_4.jpg"
+  },
+  {
+    "plant": "Eucalyptus",
+    "file": "Eucalyptus_4.jpg"
+  },
+  {
+    "plant": "Oregano",
+    "file": "Oregano_1.jpg"
+  },
+  {
+    "plant": "Oregano",
+    "file": "Oregano_2.jpg"
+  },
+  {
+    "plant": "Oregano",
+    "file": "Oregano_3.jpg"
+  },
+  {
+    "plant": "Oregano",
+    "file": "Oregano_4.jpg"
+  },
+  {
+    "plant": "Sage",
+    "file": "Sage_1.jpg"
+  },
+  {
+    "plant": "Sage",
+    "file": "Sage_2.jpg"
+  },
+  {
+    "plant": "Sage",
+    "file": "Sage_3.jpg"
+  },
+  {
+    "plant": "Sage",
+    "file": "Sage_4.jpg"
+  },
+  {
+    "plant": "Chamomile",
+    "file": "Chamomile_1.jpg"
+  },
+  {
+    "plant": "Chamomile",
+    "file": "Chamomile_2.jpg"
+  },
+  {
+    "plant": "Chamomile",
+    "file": "Chamomile_3.jpg"
+  },
+  {
+    "plant": "Chamomile",
+    "file": "Chamomile_4.jpg"
+  },
+  {
+    "plant": "Lavender",
+    "file": "Lavender_1.jpg"
+  },
+  {
+    "plant": "Lavender",
+    "file": "Lavender_2.jpg"
+  },
+  {
+    "plant": "Lavender",
+    "file": "Lavender_3.jpg"
+  },
+  {
+    "plant": "Lavender",
+    "file": "Lavender_4.jpg"
+  },
+  {
+    "plant": "Valerian",
+    "file": "Valerian_1.jpg"
+  },
+  {
+    "plant": "Valerian",
+    "file": "Valerian_2.jpg"
+  },
+  {
+    "plant": "Valerian",
+    "file": "Valerian_3.jpg"
+  },
+  {
+    "plant": "Valerian",
+    "file": "Valerian_4.jpg"
+  },
+  {
+    "plant": "Ginkgo",
+    "file": "Ginkgo_1.jpg"
+  },
+  {
+    "plant": "Ginkgo",
+    "file": "Ginkgo_2.jpg"
+  },
+  {
+    "plant": "Ginkgo",
+    "file": "Ginkgo_3.jpg"
+  },
+  {
+    "plant": "Ginkgo",
+    "file": "Ginkgo_4.jpg"
+  },
+  {
+    "plant": "Green Tea",
+    "file": "Green_Tea_1.jpg"
+  },
+  {
+    "plant": "Green Tea",
+    "file": "Green_Tea_2.jpg"
+  },
+  {
+    "plant": "Green Tea",
+    "file": "Green_Tea_3.jpg"
+  },
+  {
+    "plant": "Green Tea",
+    "file": "Green_Tea_4.jpg"
+  },
+  {
+    "plant": "Hibiscus",
+    "file": "Hibiscus_1.jpg"
+  },
+  {
+    "plant": "Hibiscus",
+    "file": "Hibiscus_2.jpg"
+  },
+  {
+    "plant": "Hibiscus",
+    "file": "Hibiscus_3.jpg"
+  },
+  {
+    "plant": "Hibiscus",
+    "file": "Hibiscus_4.jpg"
+  },
+  {
+    "plant": "Dandelion",
+    "file": "Dandelion_1.jpg"
+  },
+  {
+    "plant": "Dandelion",
+    "file": "Dandelion_2.jpg"
+  },
+  {
+    "plant": "Dandelion",
+    "file": "Dandelion_3.jpg"
+  },
+  {
+    "plant": "Dandelion",
+    "file": "Dandelion_4.jpg"
+  },
+  {
+    "plant": "Milk Thistle",
+    "file": "Milk_Thistle_1.jpg"
+  },
+  {
+    "plant": "Milk Thistle",
+    "file": "Milk_Thistle_2.jpg"
+  },
+  {
+    "plant": "Milk Thistle",
+    "file": "Milk_Thistle_3.jpg"
+  },
+  {
+    "plant": "Milk Thistle",
+    "file": "Milk_Thistle_4.jpg"
+  },
+  {
+    "plant": "Artichoke",
+    "file": "Artichoke_1.jpg"
+  },
+  {
+    "plant": "Artichoke",
+    "file": "Artichoke_2.jpg"
+  },
+  {
+    "plant": "Artichoke",
+    "file": "Artichoke_3.jpg"
+  },
+  {
+    "plant": "Artichoke",
+    "file": "Artichoke_4.jpg"
+  },
+  {
+    "plant": "Slippery Elm",
+    "file": "Slippery_Elm_1.jpg"
+  },
+  {
+    "plant": "Slippery Elm",
+    "file": "Slippery_Elm_2.jpg"
+  },
+  {
+    "plant": "Slippery Elm",
+    "file": "Slippery_Elm_3.jpg"
+  },
+  {
+    "plant": "Slippery Elm",
+    "file": "Slippery_Elm_4.jpg"
+  },
+  {
+    "plant": "Psyllium",
+    "file": "Psyllium_1.jpg"
+  },
+  {
+    "plant": "Psyllium",
+    "file": "Psyllium_2.jpg"
+  },
+  {
+    "plant": "Psyllium",
+    "file": "Psyllium_3.jpg"
+  },
+  {
+    "plant": "Psyllium",
+    "file": "Psyllium_4.jpg"
+  },
+  {
+    "plant": "Senna",
+    "file": "Senna_1.jpg"
+  },
+  {
+    "plant": "Senna",
+    "file": "Senna_2.jpg"
+  },
+  {
+    "plant": "Senna",
+    "file": "Senna_3.jpg"
+  },
+  {
+    "plant": "Senna",
+    "file": "Senna_4.jpg"
+  },
+  {
+    "plant": "Haritaki",
+    "file": "Haritaki_1.jpg"
+  },
+  {
+    "plant": "Haritaki",
+    "file": "Haritaki_2.jpg"
+  },
+  {
+    "plant": "Haritaki",
+    "file": "Haritaki_3.jpg"
+  },
+  {
+    "plant": "Haritaki",
+    "file": "Haritaki_4.jpg"
+  },
+  {
+    "plant": "Bibhitaki",
+    "file": "Bibhitaki_1.jpg"
+  },
+  {
+    "plant": "Bibhitaki",
+    "file": "Bibhitaki_2.jpg"
+  },
+  {
+    "plant": "Bibhitaki",
+    "file": "Bibhitaki_3.jpg"
+  },
+  {
+    "plant": "Bibhitaki",
+    "file": "Bibhitaki_4.jpg"
+  },
+  {
+    "plant": "Gotu Kola",
+    "file": "Gotu_Kola_1.jpg"
+  },
+  {
+    "plant": "Gotu Kola",
+    "file": "Gotu_Kola_2.jpg"
+  },
+  {
+    "plant": "Gotu Kola",
+    "file": "Gotu_Kola_3.jpg"
+  },
+  {
+    "plant": "Gotu Kola",
+    "file": "Gotu_Kola_4.jpg"
+  },
+  {
+    "plant": "Calendula",
+    "file": "Calendula_1.jpg"
+  },
+  {
+    "plant": "Calendula",
+    "file": "Calendula_2.jpg"
+  },
+  {
+    "plant": "Calendula",
+    "file": "Calendula_3.jpg"
+  },
+  {
+    "plant": "Calendula",
+    "file": "Calendula_4.jpg"
+  },
+  {
+    "plant": "Tea Tree",
+    "file": "Tea_Tree_1.jpg"
+  },
+  {
+    "plant": "Tea Tree",
+    "file": "Tea_Tree_2.jpg"
+  },
+  {
+    "plant": "Tea Tree",
+    "file": "Tea_Tree_3.jpg"
+  },
+  {
+    "plant": "Tea Tree",
+    "file": "Tea_Tree_4.jpg"
+  },
+  {
+    "plant": "Witch Hazel",
+    "file": "Witch_Hazel_1.jpg"
+  },
+  {
+    "plant": "Witch Hazel",
+    "file": "Witch_Hazel_2.jpg"
+  },
+  {
+    "plant": "Witch Hazel",
+    "file": "Witch_Hazel_3.jpg"
+  },
+  {
+    "plant": "Witch Hazel",
+    "file": "Witch_Hazel_4.jpg"
+  },
+  {
+    "plant": "Rose",
+    "file": "Rose_1.jpg"
+  },
+  {
+    "plant": "Rose",
+    "file": "Rose_2.jpg"
+  },
+  {
+    "plant": "Rose",
+    "file": "Rose_3.jpg"
+  },
+  {
+    "plant": "Rose",
+    "file": "Rose_4.jpg"
+  },
+  {
+    "plant": "Sandalwood",
+    "file": "Sandalwood_1.jpg"
+  },
+  {
+    "plant": "Sandalwood",
+    "file": "Sandalwood_2.jpg"
+  },
+  {
+    "plant": "Sandalwood",
+    "file": "Sandalwood_3.jpg"
+  },
+  {
+    "plant": "Sandalwood",
+    "file": "Sandalwood_4.jpg"
+  },
+  {
+    "plant": "Henna",
+    "file": "Henna_1.jpg"
+  },
+  {
+    "plant": "Henna",
+    "file": "Henna_2.jpg"
+  },
+  {
+    "plant": "Henna",
+    "file": "Henna_3.jpg"
+  },
+  {
+    "plant": "Henna",
+    "file": "Henna_4.jpg"
+  },
+  {
+    "plant": "Bhringraj",
+    "file": "Bhringraj_1.jpg"
+  },
+  {
+    "plant": "Bhringraj",
+    "file": "Bhringraj_2.jpg"
+  },
+  {
+    "plant": "Bhringraj",
+    "file": "Bhringraj_3.jpg"
+  },
+  {
+    "plant": "Bhringraj",
+    "file": "Bhringraj_4.jpg"
+  },
+  {
+    "plant": "Guggul",
+    "file": "Guggul_1.jpg"
+  },
+  {
+    "plant": "Guggul",
+    "file": "Guggul_2.jpg"
+  },
+  {
+    "plant": "Guggul",
+    "file": "Guggul_3.jpg"
+  },
+  {
+    "plant": "Guggul",
+    "file": "Guggul_4.jpg"
+  },
+  {
+    "plant": "Flaxseed",
+    "file": "Flaxseed_1.jpg"
+  },
+  {
+    "plant": "Flaxseed",
+    "file": "Flaxseed_2.jpg"
+  },
+  {
+    "plant": "Flaxseed",
+    "file": "Flaxseed_3.jpg"
+  },
+  {
+    "plant": "Flaxseed",
+    "file": "Flaxseed_4.jpg"
+  },
+  {
+    "plant": "Chia",
+    "file": "Chia_1.jpg"
+  },
+  {
+    "plant": "Chia",
+    "file": "Chia_2.jpg"
+  },
+  {
+    "plant": "Chia",
+    "file": "Chia_3.jpg"
+  },
+  {
+    "plant": "Chia",
+    "file": "Chia_4.jpg"
+  },
+  {
+    "plant": "Hawthorn",
+    "file": "Hawthorn_1.jpg"
+  },
+  {
+    "plant": "Hawthorn",
+    "file": "Hawthorn_2.jpg"
+  },
+  {
+    "plant": "Hawthorn",
+    "file": "Hawthorn_3.jpg"
+  },
+  {
+    "plant": "Hawthorn",
+    "file": "Hawthorn_4.jpg"
+  },
+  {
+    "plant": "Olive Leaf",
+    "file": "Olive_Leaf_1.jpg"
+  },
+  {
+    "plant": "Olive Leaf",
+    "file": "Olive_Leaf_2.jpg"
+  },
+  {
+    "plant": "Olive Leaf",
+    "file": "Olive_Leaf_3.jpg"
+  },
+  {
+    "plant": "Olive Leaf",
+    "file": "Olive_Leaf_4.jpg"
+  },
+  {
+    "plant": "Nettle",
+    "file": "Nettle_1.jpg"
+  },
+  {
+    "plant": "Nettle",
+    "file": "Nettle_2.jpg"
+  },
+  {
+    "plant": "Nettle",
+    "file": "Nettle_3.jpg"
+  },
+  {
+    "plant": "Nettle",
+    "file": "Nettle_4.jpg"
+  },
+  {
+    "plant": "Elderberry",
+    "file": "Elderberry_1.jpg"
+  },
+  {
+    "plant": "Elderberry",
+    "file": "Elderberry_2.jpg"
+  },
+  {
+    "plant": "Elderberry",
+    "file": "Elderberry_3.jpg"
+  },
+  {
+    "plant": "Elderberry",
+    "file": "Elderberry_4.jpg"
+  },
+  {
+    "plant": "Echinacea",
+    "file": "Echinacea_1.jpg"
+  },
+  {
+    "plant": "Echinacea",
+    "file": "Echinacea_2.jpg"
+  },
+  {
+    "plant": "Echinacea",
+    "file": "Echinacea_3.jpg"
+  },
+  {
+    "plant": "Echinacea",
+    "file": "Echinacea_4.jpg"
+  },
+  {
+    "plant": "Schisandra",
+    "file": "Schisandra_1.jpg"
+  },
+  {
+    "plant": "Schisandra",
+    "file": "Schisandra_2.jpg"
+  },
+  {
+    "plant": "Schisandra",
+    "file": "Schisandra_3.jpg"
+  },
+  {
+    "plant": "Schisandra",
+    "file": "Schisandra_4.jpg"
+  },
+  {
+    "plant": "Cayenne",
+    "file": "Cayenne_1.jpg"
+  },
+  {
+    "plant": "Cayenne",
+    "file": "Cayenne_2.jpg"
+  },
+  {
+    "plant": "Cayenne",
+    "file": "Cayenne_3.jpg"
+  },
+  {
+    "plant": "Cayenne",
+    "file": "Cayenne_4.jpg"
+  },
+  {
+    "plant": "Boswellia",
+    "file": "Boswellia_1.jpg"
+  },
+  {
+    "plant": "Boswellia",
+    "file": "Boswellia_2.jpg"
+  },
+  {
+    "plant": "Boswellia",
+    "file": "Boswellia_3.jpg"
+  },
+  {
+    "plant": "Boswellia",
+    "file": "Boswellia_4.jpg"
+  },
+  {
+    "plant": "Frankincense",
+    "file": "Frankincense_1.jpg"
+  },
+  {
+    "plant": "Frankincense",
+    "file": "Frankincense_2.jpg"
+  },
+  {
+    "plant": "Frankincense",
+    "file": "Frankincense_3.jpg"
+  },
+  {
+    "plant": "Frankincense",
+    "file": "Frankincense_4.jpg"
+  },
+  {
+    "plant": "Mint",
+    "file": "Mint_1.jpg"
+  },
+  {
+    "plant": "Mint",
+    "file": "Mint_2.jpg"
+  },
+  {
+    "plant": "Mint",
+    "file": "Mint_3.jpg"
+  },
+  {
+    "plant": "Mint",
+    "file": "Mint_4.jpg"
+  },
+  {
+    "plant": "Aparajita",
+    "file": "Aparajita_1.jpg"
+  },
+  {
+    "plant": "Aparajita",
+    "file": "Aparajita_2.jpg"
+  },
+  {
+    "plant": "Aparajita",
+    "file": "Aparajita_3.jpg"
+  },
+  {
+    "plant": "Aparajita",
+    "file": "Aparajita_4.jpg"
+  },
+  {
+    "plant": "Butea",
+    "file": "Butea_1.jpg"
+  },
+  {
+    "plant": "Butea",
+    "file": "Butea_2.jpg"
+  },
+  {
+    "plant": "Butea",
+    "file": "Butea_3.jpg"
+  },
+  {
+    "plant": "Butea",
+    "file": "Butea_4.jpg"
+  }
+]

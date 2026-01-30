@@ -1,39 +1,36 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const PlantSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  botanicalName: String,
-  description: String,
-  region: String,
-  uses: [String],
-  advantages: [String],
-  disadvantages: [String],
-  sideEffects: String,
-  
-  // ✅ Field: Jo aapne add kiya tha
-  partsUsed: { type: String }, // e.g., "Leaves, Roots"
+  // ✅ EXACT DATASET NAMES
+  "Common Name": { type: String, required: true },
+  "Scientific Name": String,
 
-  images: [String],
-  selected3DImageIndex: { type: Number, default: 0 },
-  
-  // ✅ Field: Kis User ne request bheji hai
-  addedBy: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'User' 
-  },
+  "Description": String,
 
-  // ✅ Field: Approval Status
-  // Default 'false' rakha hai taaki pehle admin check kare
-  isApproved: { type: Boolean, default: false }, 
+  "Uses": String,
+  "Advantages": String,
+  "Disadvantages": String,
+  "Side Effects": String,
+  "Related Plants": String,
 
-  // ✅ NEW FIELD: Kis Admin ne Approve kiya (Jo aapko chahiye tha)
-  approvedBy: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'User',
+  // Google image URLs
+  "Image 1": String,
+  "Image 2": String,
+  "Image 3": String,
+  "Image 4": String,
+
+  "3D Model Link": String,
+
+  // Meta
+  addedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     default: null
   },
+
+  isApproved: { type: Boolean, default: true },
 
   createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Plant', PlantSchema);
+module.exports = mongoose.model("Plant", PlantSchema);

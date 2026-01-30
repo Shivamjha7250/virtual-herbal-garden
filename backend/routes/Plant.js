@@ -4,27 +4,20 @@ const Plant = require('../models/Plant');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const jwt = require('jsonwebtoken'); // ✅ JWT Import kiya (Token check ke liye)
+const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'herbal_garden_secret_key_123';
 
 // ==========================================
-// 🔒 INTERNAL MIDDLEWARE (Verify Token)
-// (Ye check karega ki user login hai ya nahi)
+// 🔒 MIDDLEWARE: Verify Token
 // ==========================================
 const verifyToken = (req, res, next) => {
   const tokenHeader = req.header('Authorization');
-
-  if (!tokenHeader) {
-    return res.status(401).json({ message: "Access Denied. Login Required." });
-  }
+  if (!tokenHeader) return res.status(401).json({ message: "Access Denied. Login Required." });
 
   try {
-    // "Bearer " hatakar token nikalo
     const token = tokenHeader.replace('Bearer ', '');
-    // Verify karo
     const verified = jwt.verify(token, JWT_SECRET);
-    // User data req.user mein save karo
     req.user = verified;
     next();
   } catch (err) {
@@ -33,17 +26,32 @@ const verifyToken = (req, res, next) => {
 };
 
 // ==========================================
-// 📸 IMAGE UPLOAD SETUP (Multer)
+// 🛡️ MIDDLEWARE: Verify Admin
+// (Sirf Admin hi Delete/Approve kar sake)
+// ==========================================
+const verifyAdmin = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    next();
+  } else {
+    res.status(403).json({ message: "Access Denied. Admins only." });
+  }
+};
+
+// ==========================================
+// 📸 MULTER CONFIG (Image Upload)
 // ==========================================
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const dir = path.join(__dirname, '../public/images');
+    // ✅ PATH FIX: 'routes' folder se bahar nikal kar 'images' folder mein jao
+    const dir = path.join(__dirname, '../images'); 
+    
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir, { recursive: true });
     }
     cb(null, dir);
   },
   filename: (req, file, cb) => {
+    // Unique Filename
     cb(null, Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname));
   }
 });
@@ -51,10 +59,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // ==========================================
-// 🌐 GET ROUTES (Public - No Login Needed)
+// 🌐 GET ROUTES (Public)
 // ==========================================
 
-// Get All Approved Plants
+// 1. Get All Approved Plants
 router.get('/', async (req, res) => {
   try {
     const plants = await Plant.find({ isApproved: true });
@@ -62,15 +70,7 @@ router.get('/', async (req, res) => {
   } catch (err) { res.status(500).json({ message: err.message }); }
 });
 
-// Get Pending Plants
-router.get('/pending', async (req, res) => {
-  try {
-    const plants = await Plant.find({ isApproved: false });
-    res.json(plants);
-  } catch (err) { res.status(500).json({ message: err.message }); }
-});
-
-// Get Single Plant
+// 2. Get Single Plant
 router.get('/:id', async (req, res) => {
   try {
     const plant = await Plant.findById(req.params.id);
@@ -80,45 +80,53 @@ router.get('/:id', async (req, res) => {
 });
 
 // ==========================================
-// ➕ POST ROUTE (ADD PLANT - Login Required)
+// 🔒 SECURE ROUTES (Login Required)
 // ==========================================
-// ✅ 'verifyToken' use kiya taaki user ID mil sake
-router.post('/', verifyToken, upload.array('images', 5), async (req, res) => {
+
+// 3. Get Pending Plants (Only Admin)
+router.get('/admin/pending', verifyToken, verifyAdmin, async (req, res) => {
   try {
-    console.log("📥 Adding Plant by User ID:", req.user.id);
+    const plants = await Plant.find({ isApproved: false });
+    res.json(plants);
+  } catch (err) { res.status(500).json({ message: err.message }); }
+});
 
-    const imagePaths = req.files ? req.files.map(file => `/images/${file.filename}`) : [];
+// 4. ADD PLANT (User or Admin)
+router.post('/', verifyToken, upload.array('images', 4), async (req, res) => {
+  try {
+    console.log("📥 Adding Plant by User:", req.user.id);
     
-    // Check if user is admin (req.user se check karna secure hai)
-    const isAdmin = req.user.role === 'admin'; 
+    const files = req.files || [];
+    const isAdmin = req.user.role === 'admin';
 
+    // ✅ SCHEMA MATCH: Database ke field names se match kiya
     const newPlant = new Plant({
-      name: req.body.name,
-      botanicalName: req.body.botanicalName,
+      commonName: req.body.commonName,       // 'name' nahi, 'commonName'
+      scientificName: req.body.scientificName, // 'botanicalName' nahi
       description: req.body.description,
-      region: req.body.region,
       
-      // ✅ Naya Field
-      partsUsed: req.body.partsUsed,
-
-      uses: req.body.uses ? req.body.uses.split(',') : [],
-      advantages: req.body.advantages ? req.body.advantages.split(',') : [],
-      disadvantages: req.body.disadvantages ? req.body.disadvantages.split(',') : [],
-      
+      uses: req.body.uses,
+      advantages: req.body.advantages,
+      disadvantages: req.body.disadvantages,
       sideEffects: req.body.sideEffects,
-      images: imagePaths,
-      selected3DImageIndex: req.body.selected3DImageIndex || 0,
-      
-      category: req.body.category || "General",
+      relatedPlants: req.body.relatedPlants,
 
-      // ✅ Tracking Info
-      addedBy: req.user.id,             // Kisne add kiya
-      isApproved: isAdmin,              // Admin hai to direct approve
-      approvedBy: isAdmin ? req.user.id : null // Admin ne add kiya to approvedBy bhi set karo
+      // ✅ IMAGES: Array ko alag strings mein convert kiya
+      image1: files[0] ? files[0].filename : "",
+      image2: files[1] ? files[1].filename : "",
+      image3: files[2] ? files[2].filename : "",
+      image4: files[3] ? files[3].filename : "",
+
+      threeDModelLink: req.body.threeDModelLink || "",
+
+      // Tracking
+      addedBy: req.user.id,
+      isApproved: isAdmin, // Admin hai to direct approve
+      approvedBy: isAdmin ? req.user.id : null
     });
 
     const savedPlant = await newPlant.save();
-    console.log("✅ Success:", savedPlant.name);
+    console.log("✅ Plant Saved:", savedPlant.commonName);
     res.status(201).json(savedPlant);
 
   } catch (err) {
@@ -127,20 +135,14 @@ router.post('/', verifyToken, upload.array('images', 5), async (req, res) => {
   }
 });
 
-// ==========================================
-// 👑 ADMIN ACTIONS (Login Required)
-// ==========================================
-
-// Approve Plant
-// ✅ 'verifyToken' use kiya taaki admin ki ID save kar sakein
-router.put('/approve/:id', verifyToken, async (req, res) => {
+// 5. Approve Plant (Only Admin)
+router.put('/approve/:id', verifyToken, verifyAdmin, async (req, res) => {
   try {
     const plant = await Plant.findById(req.params.id);
     if(!plant) return res.status(404).json({ message: "Plant not found" });
 
-    // ✅ Approve Logic
     plant.isApproved = true;
-    plant.approvedBy = req.user.id; // Jis Admin ne click kiya, uski ID save karo
+    plant.approvedBy = req.user.id;
 
     await plant.save();
     res.json({ message: "Approved successfully!", plant });
@@ -149,11 +151,11 @@ router.put('/approve/:id', verifyToken, async (req, res) => {
   }
 });
 
-// Delete Plant
-router.delete('/:id', verifyToken, async (req, res) => {
+// 6. Delete Plant (Only Admin)
+router.delete('/:id', verifyToken, verifyAdmin, async (req, res) => {
   try {
     await Plant.findByIdAndDelete(req.params.id);
-    res.json({ message: "Deleted!" });
+    res.json({ message: "Deleted successfully!" });
   } catch (err) { res.status(500).json({ message: err.message }); }
 });
 
