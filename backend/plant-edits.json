@@ -1,0 +1,842 @@
+[
+  {
+    "srNo": 16,
+    "commonName": "Fennel",
+    "scientificName": "Foeniculum vulgare",
+    "description": "Fennel is a medicinal and aromatic plant commonly used in herbal remedies and daily diet. It is well known for its sweet taste and digestive properties. The seeds of fennel are widely consumed after meals to support digestion. This plant helps in maintaining stomach comfort and internal balance. Fennel is easy to cultivate and eco-friendly. It has an important place in traditional herbal practices.",
+    "medicinalUses": "Fennel is mainly used to relieve indigestion, gas, and bloating. It helps in improving appetite and stomach function. Fennel supports eye health and reduces body heat. It is also used in herbal drinks and medicines for digestive comfort.",
+    "relatedPlants": [
+      "Cumin",
+      "Coriander",
+      "Ajwain"
+    ],
+    "advantages": "Fennel naturally improves digestion without harming the stomach. It refreshes breath and cools the body. It is safe for daily use in small quantities. The plant supports overall digestive wellness.",
+    "sideEffectsCaution": "Excess intake may cause nausea or allergic reactions in some people. High consumption can disturb hormonal balance. Pregnant women should avoid medicinal doses. Fennel should be used moderately.",
+    "disadvantages": "Fennel may reduce appetite if overused regularly. Its strong aroma may not be liked by everyone. Overconsumption can lead to stomach looseness. It is not suitable for long-term high-dose intake."
+  },
+  {
+    "srNo": 17,
+    "commonName": "Cumin",
+    "scientificName": "Cuminum cyminum",
+    "description": "Cumin is a widely used medicinal spice plant known for its strong digestive value. It has a warm nature and a distinctive aroma. Cumin seeds are commonly used in cooking as well as herbal remedies. This plant helps in maintaining stomach health and internal balance. Cumin plays an important role in traditional medicine systems. It is easily available and eco-friendly.",
+    "medicinalUses": "Cumin is used to improve digestion and reduce gas formation. It helps in relieving stomach pain and bloating. Cumin supports metabolism and nutrient absorption. It is also used in herbal drinks for digestive comfort.",
+    "relatedPlants": [
+      "Fennel",
+      "Coriander",
+      "Ajwain"
+    ],
+    "advantages": "Cumin strengthens digestion naturally. It helps in reducing stomach discomfort. It supports better absorption of food nutrients. It is safe for regular use in small amounts.",
+    "sideEffectsCaution": "Excess intake may cause dryness in the mouth. Some people may experience acidity. High doses can increase body heat. Cumin should be used in balanced quantity.",
+    "disadvantages": "Overuse of cumin may reduce natural taste sensation. It can cause excessive thirst in some individuals. Continuous heavy use may disturb stomach lining. It is not suitable for people with severe acidity problems."
+  },
+  {
+    "srNo": 18,
+    "commonName": "Coriander",
+    "scientificName": "Coriandrum sativum",
+    "description": "Coriander is a commonly used medicinal herb valued for both its leaves and seeds. It is known for its mild cooling effect on the body. This plant helps maintain digestive comfort and freshness. Coriander is widely used in food, herbal preparations, and home remedies. It supports internal balance and daily wellness. The plant is easy to grow and environmentally friendly.",
+    "medicinalUses": "Coriander is used to improve digestion and reduce acidity. It helps in relieving stomach irritation and bloating. Coriander supports blood sugar balance and detoxification. It is also used to cool the body during heat-related discomfort.",
+    "relatedPlants": [
+      "Fennel",
+      "Cumin",
+      "Mint"
+    ],
+    "advantages": "Coriander cools the digestive system naturally. It helps in cleansing the body gently. It supports appetite regulation. The herb is safe for regular culinary and herbal use.",
+    "sideEffectsCaution": "Excess intake may lower blood pressure in some people. A few individuals may experience allergic reactions. High medicinal doses are not advised regularly. Coriander should be consumed in moderation.",
+    "disadvantages": "Coriander’s cooling nature may not suit people with frequent cold sensitivity. Overuse can reduce digestive fire. Its mild taste may be ineffective for severe digestive issues. Long-term heavy use may cause weakness in digestion."
+  },
+  {
+    "srNo": 19,
+    "commonName": "Fenugreek",
+    "scientificName": "Trigonella foenum-graecum",
+    "description": "Fenugreek is a well-known medicinal plant widely used in herbal medicine and daily nutrition. It is valued for its slightly bitter taste and health-supporting properties. Fenugreek seeds and leaves are both used for medicinal purposes. This plant helps in maintaining digestive and metabolic balance. Fenugreek is easy to grow and commonly found in herbal gardens. It plays an important role in traditional health practices.",
+    "medicinalUses": "Fenugreek is used to control blood sugar levels naturally. It helps in improving digestion and relieving constipation. Fenugreek supports hormonal balance and strength. It is also used to improve appetite and metabolism.",
+    "relatedPlants": [
+      "Fennel",
+      "Coriander",
+      "Cumin"
+    ],
+    "advantages": "Fenugreek supports blood sugar management. It improves digestive strength. It helps in maintaining energy levels. The plant is useful in daily health routines.",
+    "sideEffectsCaution": "Excess intake may cause bloating or stomach discomfort. Some people may experience a strong body odor. High medicinal doses are not advised regularly. Fenugreek should be used carefully.",
+    "disadvantages": "Fenugreek has a bitter taste which many people dislike. Overuse may reduce appetite instead of improving it. Continuous heavy intake can cause digestive heaviness. It may not suit people with low blood sugar."
+  },
+  {
+    "srNo": 20,
+    "commonName": "Moringa",
+    "scientificName": "Moringa oleifera",
+    "description": "Moringa is a highly nutritious medicinal plant known for its rich vitamin and mineral content. Almost every part of the plant, including leaves, pods, and seeds, is useful. Moringa supports overall body nourishment and strength. It is widely used in herbal medicine as a natural health supplement. The plant grows easily in warm climates and is eco-friendly. Moringa is often called a “natural nutrition powerhouse.”",
+    "medicinalUses": "Moringa is used to improve immunity and energy levels. It helps in managing blood sugar and cholesterol. Moringa supports bone strength and muscle health. It is also used to improve digestion and reduce weakness.",
+    "relatedPlants": [
+      "Amla",
+      "Spinach",
+      "Fenugreek"
+    ],
+    "advantages": "Moringa provides high nutritional value naturally. It supports immunity and daily wellness. The plant helps fight fatigue and malnutrition. It is useful for long-term health support.",
+    "sideEffectsCaution": "Excess consumption may cause stomach upset. Some people may experience nausea. High medicinal doses are not advised for pregnant women. Moringa should be taken in controlled quantity.",
+    "disadvantages": "Moringa has a strong leafy taste that many people dislike. Overuse may cause digestive heaviness. Fresh leaves are not easily available everywhere. Long-term excessive intake may disturb nutrient balance."
+  },
+  {
+    "srNo": 21,
+    "commonName": "Brahmi",
+    "scientificName": "Bacopa monnieri",
+    "description": "Brahmi is a well-known medicinal herb mainly valued for brain and memory support. It is a small creeping plant that grows in moist areas. Brahmi is traditionally used to improve concentration and mental clarity. This plant supports nervous system balance and calmness. It is commonly used in herbal tonics and powders. Brahmi has an important place in traditional cognitive health practices.",
+    "medicinalUses": "Brahmi is used to improve memory and learning ability. It helps in reducing stress and mental fatigue. Brahmi supports better sleep and nervous system strength. It is also used in anxiety and focus-related problems.",
+    "relatedPlants": [
+      "Shankhpushpi",
+      "Ashwagandha",
+      "Jatamansi"
+    ],
+    "advantages": "Brahmi enhances brain performance naturally. It helps in calming the mind. It supports long-term mental wellness. The herb is useful for students and elderly people.",
+    "sideEffectsCaution": "Excess use may cause stomach discomfort. Some people may feel nausea or heaviness. High doses can cause drowsiness. Brahmi should be used in moderate quantity.",
+    "disadvantages": "Brahmi works slowly and requires long-term use for results. Its bitter taste is unpleasant for many people. Overuse may reduce digestive strength. It is not suitable for people with very low blood pressure."
+  },
+  {
+    "srNo": 22,
+    "commonName": "Shankhpushpi",
+    "scientificName": "Convolvulus pluricaulis",
+    "description": "Shankhpushpi is a traditional medicinal herb mainly known for its effect on the brain and nervous system. It is a small flowering plant commonly used in herbal tonics. Shankhpushpi helps in improving mental calmness and clarity. This plant supports emotional balance and stress control. It is widely used in Ayurvedic preparations for mind-related health. Shankhpushpi holds a special place in cognitive wellness practices.",
+    "medicinalUses": "Shankhpushpi is used to improve memory and concentration. It helps in reducing anxiety and mental stress. The herb supports better sleep quality. It is also used in nervous weakness and mental fatigue.",
+    "relatedPlants": [
+      "Brahmi",
+      "Jatamansi",
+      "Ashwagandha"
+    ],
+    "advantages": "Shankhpushpi calms the nervous system naturally. It improves focus and mental stability. It is helpful for students and people under stress. The herb supports long-term brain health.",
+    "sideEffectsCaution": "Excess use may cause drowsiness. Some people may experience mild stomach discomfort. High doses are not recommended regularly. Shankhpushpi should be taken in controlled quantity.",
+    "disadvantages": "Shankhpushpi shows slow results and needs regular use. Its mild nature may not work in severe mental conditions. Overuse can reduce alertness. It is not suitable for people who require high physical energy."
+  },
+  {
+    "srNo": 23,
+    "commonName": "Arjuna",
+    "scientificName": "Terminalia arjuna",
+    "description": "Arjuna is a large medicinal tree widely known for its benefits to heart health. The bark of this tree is mainly used in herbal medicine. Arjuna helps in strengthening the heart muscles and improving blood circulation. It has been used for centuries in traditional health systems. This plant supports endurance and internal strength. Arjuna is an important tree in cardiovascular herbal care.",
+    "medicinalUses": "Arjuna is commonly used for heart-related disorders. It helps in maintaining healthy blood pressure levels. The bark supports cholesterol balance and cardiac strength. It is also used in weakness and fatigue management.",
+    "relatedPlants": [
+      "Amla",
+      "Ashwagandha",
+      "Garlic"
+    ],
+    "advantages": "Arjuna supports strong and healthy heart function. It improves circulation naturally. It helps in long-term cardiovascular support. The plant is trusted in traditional medicine.",
+    "sideEffectsCaution": "Excess use may cause stomach heaviness. Some people may experience nausea or headache. It should be used carefully by people with low blood pressure. Medical guidance is advised for prolonged use.",
+    "disadvantages": "Arjuna bark is difficult to process and consume. Its taste is unpleasant for many people. Overuse may slow digestion. Continuous use without breaks can reduce appetite."
+  },
+  {
+    "srNo": 24,
+    "commonName": "Licorice",
+    "scientificName": "Glycyrrhiza glabra",
+    "description": "Licorice is a well-known medicinal herb valued for its naturally sweet taste and soothing nature. The root of the plant is mainly used in herbal preparations. Licorice helps in calming internal irritation and supporting throat comfort. It has been used for centuries in traditional medicine systems. This plant supports respiratory and digestive wellness. Licorice holds a special place in herbal formulations.",
+    "medicinalUses": "Licorice is used to relieve sore throat and cough. It helps in soothing stomach lining and acidity. The herb supports respiratory health and voice clarity. It is also used in weakness and fatigue recovery.",
+    "relatedPlants": [
+      "Ginger",
+      "Fennel",
+      "Ashwagandha"
+    ],
+    "advantages": "Licorice soothes irritation naturally. It supports digestion and throat health. It helps in reducing inflammation. The herb is useful in respiratory comfort.",
+    "sideEffectsCaution": "Excess intake may raise blood pressure. Some people may experience water retention. Long-term high doses are not advised. Licorice should be used carefully in medicinal amounts.",
+    "disadvantages": "Licorice is not suitable for people with hypertension. Overuse can disturb electrolyte balance. Its sweetness may mask dosage limits. Continuous heavy use can cause hormonal imbalance."
+  },
+  {
+    "srNo": 25,
+    "commonName": "Eucalyptus",
+    "scientificName": "Eucalyptus globulus",
+    "description": "Eucalyptus is a tall aromatic medicinal tree widely known for its strong fragrance and cleansing properties. The leaves of this plant contain essential oils used in herbal medicine. Eucalyptus is commonly associated with respiratory comfort and air purification. This plant grows well in warm climates and is widely cultivated. It plays an important role in herbal and natural therapy systems. Eucalyptus is also valued for its refreshing and stimulating nature.",
+    "medicinalUses": "Eucalyptus is mainly used for cough, cold, and breathing problems. It helps in clearing nasal congestion and chest blockage. The oil is used in steam inhalation and balms. It also supports muscle relaxation and pain relief.",
+    "relatedPlants": [
+      "Peppermint",
+      "Camphor",
+      "Pine"
+    ],
+    "advantages": "Eucalyptus helps in improving respiratory comfort. It has strong antibacterial properties. The plant supports air purification naturally. It is widely used in herbal oils and inhalers.",
+    "sideEffectsCaution": "Direct consumption of eucalyptus oil can be harmful. Some people may experience skin irritation from the oil. High exposure may cause dizziness. It should always be used in diluted form.",
+    "disadvantages": "Eucalyptus oil is not safe for children if misused. The strong smell may cause headaches in sensitive people. Overuse can dry out nasal passages. It is not suitable for internal use without expert guidance."
+  },
+  {
+    "srNo": 26,
+    "commonName": "Basil",
+    "scientificName": "Ocimum basilicum",
+    "description": "Basil is an aromatic medicinal herb commonly used for both health and culinary purposes. It has a fresh fragrance and a gentle warming nature. Basil leaves are widely used in herbal teas, oils, and natural remedies. This plant supports digestive comfort and mental freshness. Basil grows easily in gardens and pots. It is valued for its calming and refreshing qualities.",
+    "medicinalUses": "Basil is used to ease indigestion and stomach discomfort. It helps in relieving mild stress and mental fatigue. Basil supports respiratory comfort during seasonal changes. It is also used for headache relief and freshness.",
+    "relatedPlants": [
+      "Mint",
+      "Oregano",
+      "Rosemary"
+    ],
+    "advantages": "Basil promotes digestion gently. It refreshes the mind and senses. The plant has mild antibacterial properties. It is safe for regular use in small quantities.",
+    "sideEffectsCaution": "Excess intake may cause stomach irritation in sensitive individuals. Some people may experience allergic reactions. Concentrated basil oil should be diluted before use. Medicinal doses should be moderate.",
+    "disadvantages": "Basil loses its aroma quickly after drying. It is less effective for severe health conditions. Overuse may reduce appetite. The plant requires regular care to maintain leaf quality."
+  },
+  {
+    "srNo": 27,
+    "commonName": "Rosemary",
+    "scientificName": "Rosmarinus officinalis",
+    "description": "Rosemary is an aromatic medicinal herb known for its sharp fragrance and stimulating nature. It is commonly used in herbal remedies as well as cooking. Rosemary supports mental alertness and physical freshness. The leaves contain essential oils valued in natural therapy. This plant grows well in dry, sunny conditions. Rosemary is appreciated for its energizing qualities.",
+    "medicinalUses": "Rosemary is used to improve memory and concentration. It helps in relieving muscle pain and stiffness. The herb supports digestion and circulation. Rosemary oil is also used for scalp care and hair strength.",
+    "relatedPlants": [
+      "Sage",
+      "Thyme",
+      "Basil"
+    ],
+    "advantages": "Rosemary boosts mental focus naturally. It supports healthy blood circulation. The herb has antioxidant properties. It is useful in both wellness and culinary uses.",
+    "sideEffectsCaution": "High doses may cause restlessness or irritation. Some people may feel nausea from strong aroma. Essential oil should be diluted before use. Medicinal use should be limited.",
+    "disadvantages": "Rosemary can overstimulate the nervous system if overused. Its strong taste is not suitable for everyone. Continuous heavy use may disturb sleep patterns. It is not ideal for people with seizure disorders."
+  },
+  {
+    "srNo": 28,
+    "commonName": "Thyme",
+    "scientificName": "Thymus vulgaris",
+    "description": "Thyme is a small aromatic medicinal herb known for its strong fragrance and healing value. It has been used since ancient times in herbal and natural medicine. Thyme supports respiratory and digestive health through its active natural compounds. The leaves are commonly used in herbal teas, oils, and remedies. This plant grows well in dry and sunny areas. Thyme is valued for its protective and strengthening nature.",
+    "medicinalUses": "Thyme is used to relieve cough, sore throat, and chest congestion. It helps in fighting bacterial and fungal infections. Thyme supports digestion and reduces intestinal discomfort. It is also used in herbal mouthwashes and antiseptic preparations.",
+    "relatedPlants": [
+      "Oregano",
+      "Rosemary",
+      "Sage"
+    ],
+    "advantages": "Thyme has strong antimicrobial properties. It supports respiratory comfort naturally. The herb strengthens immunity. Small quantities are effective and beneficial.",
+    "sideEffectsCaution": "Excess use may irritate the stomach. Some people may feel sensitivity to its strong oil. Essential oil should not be used directly on skin. Medicinal intake should be controlled.",
+    "disadvantages": "Thyme’s intense flavor is not suitable for everyone. Overuse may dry out the digestive tract. It can cause throat irritation if taken frequently. Long-term heavy use may reduce natural digestion strength."
+  },
+  {
+    "srNo": 29,
+    "commonName": "Oregano",
+    "scientificName": "Origanum vulgare",
+    "description": "Oregano is a strong aromatic medicinal herb widely used for its protective and healing qualities. It is known for its warm nature and rich essential oil content. Oregano leaves are commonly used in herbal remedies as well as food seasoning. This plant supports internal defense and digestive balance. Oregano grows well in dry and sunny environments. It is valued for its powerful natural compounds.",
+    "medicinalUses": "Oregano is used to support immunity and fight infections. It helps in relieving digestive discomfort and bloating. Oregano oil is used for respiratory and microbial support. It is also applied in natural pain-relief remedies.",
+    "relatedPlants": [
+      "Thyme",
+      "Basil",
+      "Marjoram"
+    ],
+    "advantages": "Oregano has strong antibacterial and antioxidant properties. It supports immune defense naturally. The herb aids digestion and gut comfort. Small doses provide strong benefits.",
+    "sideEffectsCaution": "Excess use may cause stomach irritation. Some individuals may experience allergic reactions. Concentrated oil should be diluted properly. Medicinal use should be moderate.",
+    "disadvantages": "Oregano’s strong potency may not suit sensitive bodies. Overuse can disturb stomach acidity. Its sharp taste limits daily consumption. Continuous heavy intake may cause dryness in the digestive system."
+  },
+  {
+    "srNo": 30,
+    "commonName": "Sage",
+    "scientificName": "Salvia officinalis",
+    "description": "Sage is a medicinal and aromatic herb known for its earthy fragrance and protective nature. It has been traditionally used to support mental clarity and throat health. Sage leaves contain natural compounds valued in herbal care. This plant is commonly used in teas, gargles, and natural remedies. Sage grows well in dry, well-drained soil. It is respected for its cleansing and strengthening qualities.",
+    "medicinalUses": "Sage is used to soothe sore throat and mouth infections. It helps in improving digestion and reducing excessive sweating. Sage supports memory and mental alertness. It is also used in herbal rinses for oral health.",
+    "relatedPlants": [
+      "Rosemary",
+      "Thyme",
+      "Lavender"
+    ],
+    "advantages": "Sage supports throat and oral comfort. It helps improve focus and clarity. The herb has natural antiseptic properties. It is useful in both internal and external applications.",
+    "sideEffectsCaution": "Excess intake may cause dizziness or dryness. Some people may experience irritation from strong sage oil. Concentrated extracts should be avoided. Medicinal use should be limited.",
+    "disadvantages": "Sage has a strong, bitter taste that many people dislike. Overuse may reduce body moisture. It is not suitable for long-term continuous use. High doses may disturb nervous system balance."
+  },
+  {
+    "srNo": 31,
+    "commonName": "Chamomile",
+    "scientificName": "Matricaria chamomilla",
+    "description": "Chamomile is a gentle medicinal herb widely known for its calming and soothing nature. The plant produces small daisy-like flowers that are used in herbal preparations. Chamomile is commonly consumed as herbal tea for relaxation. It supports emotional balance and digestive comfort. This herb has been used for centuries in natural wellness practices. Chamomile is valued for its mild yet effective healing qualities.",
+    "medicinalUses": "Chamomile is used to reduce stress and promote better sleep. It helps in soothing stomach discomfort and cramps. The herb supports skin healing when applied externally. It is also used to relieve mild anxiety and restlessness.",
+    "relatedPlants": [
+      "Lavender",
+      "Lemon Balm",
+      "Sage"
+    ],
+    "advantages": "Chamomile calms the nervous system naturally. It supports peaceful sleep and relaxation. The herb is gentle and suitable for sensitive users. It helps in maintaining digestive ease.",
+    "sideEffectsCaution": "Some people may experience allergic reactions, especially those sensitive to flowers. Excess consumption may cause nausea. Strong extracts should be avoided. Chamomile should be used moderately.",
+    "disadvantages": "Chamomile acts slowly and is not effective for severe conditions. Its mild nature may not provide quick relief. Overuse can reduce alertness during daytime. The herb is not suitable for people allergic to daisy-family plants."
+  },
+  {
+    "srNo": 32,
+    "commonName": "Lavender",
+    "scientificName": "Lavandula angustifolia",
+    "description": "Lavender is a fragrant medicinal plant widely known for its relaxing and soothing aroma. It is commonly grown for its purple flowers and essential oil. Lavender supports mental calmness and emotional balance. This plant is often used in wellness therapies and natural remedies. It grows well in dry and sunny climates. Lavender is valued for its gentle yet powerful calming effect.",
+    "medicinalUses": "Lavender is used to reduce stress, anxiety, and nervous tension. It helps in improving sleep quality. Lavender oil is applied for headache and muscle relaxation. It is also used in skin care for minor irritation.",
+    "relatedPlants": [
+      "Chamomile",
+      "Rosemary",
+      "Sage"
+    ],
+    "advantages": "Lavender calms the mind naturally. It improves sleep and relaxation. The plant has pleasant fragrance and healing value. It is widely used in aromatherapy.",
+    "sideEffectsCaution": "Excess use may cause headache or nausea in sensitive people. Some individuals may experience skin irritation from oil. Essential oil should be diluted before use. Medicinal use should be limited.",
+    "disadvantages": "Lavender’s strong aroma may not suit everyone. Overuse can cause drowsiness during daytime. It is less effective for physical pain relief. Continuous heavy use may reduce alertness."
+  },
+  {
+    "srNo": 33,
+    "commonName": "Valerian",
+    "scientificName": "Valeriana officinalis",
+    "description": "Valerian is a medicinal herb mainly known for its strong calming effect on the nervous system. The root of the plant is commonly used in herbal preparations. Valerian has a distinctive smell and is valued for its sedative nature. This plant supports mental relaxation and emotional stability. It has been used traditionally to manage restlessness. Valerian is an important herb in sleep-support remedies.",
+    "medicinalUses": "Valerian is used to improve sleep quality and reduce insomnia. It helps in calming anxiety and nervous tension. The herb supports relaxation of muscles. It is also used in stress-related disorders.",
+    "relatedPlants": [
+      "Chamomile",
+      "Lavender",
+      "Lemon Balm"
+    ],
+    "advantages": "Valerian promotes deep relaxation naturally. It supports better sleep patterns. The herb helps in calming overactive nerves. It is useful for stress management.",
+    "sideEffectsCaution": "Excess intake may cause dizziness or headache. Some people may feel drowsy the next day. High doses are not advised before daytime activities. Valerian should be used carefully.",
+    "disadvantages": "Valerian has a very strong odor that many people dislike. It may cause dependency if overused regularly. Sudden stopping after long use can disturb sleep. It is not suitable for long-term continuous intake."
+  },
+  {
+    "srNo": 34,
+    "commonName": "Ginkgo",
+    "scientificName": "Ginkgo biloba",
+    "description": "Ginkgo is one of the oldest known medicinal tree species in the world. It is mainly valued for its effect on brain and blood circulation. The leaves of the Ginkgo tree are used in herbal supplements. This plant supports mental sharpness and alertness. Ginkgo is widely used in modern herbal formulations. It is known for improving overall cognitive performance.",
+    "medicinalUses": "Ginkgo is used to enhance memory and concentration. It helps in improving blood flow to the brain. The herb supports mental clarity in aging individuals. It is also used to reduce dizziness and mental fatigue.",
+    "relatedPlants": [
+      "Brahmi",
+      "Ginseng",
+      "Gotu Kola"
+    ],
+    "advantages": "Ginkgo supports healthy brain circulation. It improves focus and mental alertness. The plant has antioxidant properties. It is useful for long-term cognitive support.",
+    "sideEffectsCaution": "Some people may experience headache or stomach upset. Ginkgo may increase bleeding risk in sensitive individuals. It should be avoided before surgery. Medical guidance is advised for regular use.",
+    "disadvantages": "Ginkgo acts slowly and requires long-term use for results. It is not suitable for children. Overuse may cause nervous restlessness. The plant is less effective for acute conditions."
+  },
+  {
+    "srNo": 35,
+    "commonName": "Green Tea",
+    "scientificName": "Camellia sinensis",
+    "description": "Green Tea is a widely consumed medicinal plant known for its refreshing and health-supporting qualities. The leaves are minimally processed, which helps retain natural antioxidants. This plant is valued for supporting metabolism and internal cleansing. Green Tea is commonly used as a daily wellness drink across the world. It promotes lightness and freshness in the body. The plant holds an important place in natural health practices.",
+    "medicinalUses": "Green Tea is used to improve metabolism and support weight management. It helps in reducing oxidative stress in the body. The drink supports heart health and gentle detoxification. It is also used to improve mental alertness.",
+    "relatedPlants": [
+      "White Tea",
+      "Oolong Tea",
+      "Ginseng"
+    ],
+    "advantages": "Green Tea is rich in antioxidants. It supports natural detox processes. It improves focus without strong stimulation. It is suitable for daily wellness routines.",
+    "sideEffectsCaution": "Excess intake may cause acidity or restlessness. Some people may experience sleep disturbance due to caffeine. It should not be consumed on an empty stomach. Moderation is advised.",
+    "disadvantages": "Green Tea has a bitter taste that many people dislike. Overuse may reduce iron absorption. It is less suitable for people with weak digestion. Strong brews can cause stomach irritation."
+  },
+  {
+    "srNo": 36,
+    "commonName": "Hibiscus",
+    "scientificName": "Hibiscus rosa-sinensis",
+    "description": "Hibiscus is a flowering medicinal plant known for its bright petals and health-supporting qualities. The flowers and leaves are commonly used in herbal preparations. Hibiscus is valued for its cooling nature and nourishing effect on the body. This plant supports hair, skin, and circulatory wellness. It grows well in warm climates and home gardens. Hibiscus is widely used in traditional beauty and health practices.",
+    "medicinalUses": "Hibiscus is used to support healthy blood pressure levels. It helps in improving hair growth and reducing hair fall. The plant supports digestion and body cooling. Hibiscus tea is also used for heart and metabolic health.",
+    "relatedPlants": [
+      "Rose",
+      "Amla",
+      "Aloe Vera"
+    ],
+    "advantages": "Hibiscus supports natural hair and skin care. It helps in cooling the body. The plant supports heart health gently. It is useful in both internal and external remedies.",
+    "sideEffectsCaution": "Excess consumption may lower blood pressure too much. Some people may experience stomach discomfort. It should be used carefully by pregnant women. Moderation is important for regular use.",
+    "disadvantages": "Hibiscus shows slow results and needs consistent use. Its sour taste may not be liked by everyone. Overuse may cause weakness in some individuals. It is not suitable for people with very low blood pressure."
+  },
+  {
+    "srNo": 37,
+    "commonName": "Dandelion",
+    "scientificName": "Taraxacum officinale",
+    "description": "Dandelion is a hardy medicinal plant known for its bright yellow flowers and deep roots. Almost every part of the plant, including leaves and roots, is used in herbal practices. Dandelion is valued for its cleansing and balancing effect on the body. This plant supports liver and kidney wellness naturally. It grows easily in open fields and gardens. Dandelion has long been used in traditional detox remedies.",
+    "medicinalUses": "Dandelion is used to support liver function and natural detoxification. It helps in improving digestion and reducing water retention. The plant supports kidney health and urinary flow. It is also used to improve appetite and metabolism.",
+    "relatedPlants": [
+      "Milk Thistle",
+      "Chicory",
+      "Burdock Root"
+    ],
+    "advantages": "Dandelion supports internal cleansing gently. It helps in improving digestion and metabolism. The plant supports liver and kidney health. It is a natural diuretic.",
+    "sideEffectsCaution": "Some people may experience allergic reactions, especially those sensitive to flowers. Excess use may cause stomach upset. It should be used carefully in gallbladder issues. Moderation is advised.",
+    "disadvantages": "Dandelion has a bitter taste that many people dislike. Overuse may increase urination excessively. It is less suitable for people with dehydration. Continuous heavy use may disturb mineral balance."
+  },
+  {
+    "srNo": 38,
+    "commonName": "Milk Thistle",
+    "scientificName": "Silybum marianum",
+    "description": "Milk Thistle is a medicinal flowering plant mainly known for its liver-protective properties. The seeds of this plant contain active compounds used in herbal supplements. Milk Thistle supports internal repair and cleansing processes. It has been traditionally used to maintain liver strength and resilience. This plant grows well in sunny, dry conditions. Milk Thistle holds a strong place in detox-focused herbal care.",
+    "medicinalUses": "Milk Thistle is used to support liver detoxification and regeneration. It helps in protecting liver cells from toxins. The plant supports digestion and bile flow. It is also used in recovery from chemical or alcohol-related liver stress.",
+    "relatedPlants": [
+      "Dandelion",
+      "Turmeric",
+      "Chicory"
+    ],
+    "advantages": "Milk Thistle strengthens liver function naturally. It supports internal cleansing mechanisms. The plant has antioxidant properties. It is widely used in liver-support supplements.",
+    "sideEffectsCaution": "Some people may experience mild stomach upset. Allergic reactions are possible in sensitive individuals. High doses may cause bloating. It should be used with guidance for long-term use.",
+    "disadvantages": "Milk Thistle works slowly and requires consistent use. Its benefits are mainly limited to liver health. Overuse may interfere with digestion. It is not suitable for people allergic to daisy-family plants."
+  },
+  {
+    "srNo": 39,
+    "commonName": "Artichoke",
+    "scientificName": "Cynara scolymus",
+    "description": "Artichoke is a medicinal vegetable plant valued for its digestive and liver-supporting qualities. The leaves are mainly used in herbal preparations and extracts. Artichoke supports bile production and fat metabolism. This plant is commonly used in modern herbal supplements. It grows best in mild climates with good soil nutrition. Artichoke is known for promoting internal balance and digestive efficiency.",
+    "medicinalUses": "Artichoke is used to support liver function and bile flow. It helps in improving digestion, especially of fatty foods. The plant supports cholesterol balance and gut comfort. It is also used in mild detox and metabolic support.",
+    "relatedPlants": [
+      "Milk Thistle",
+      "Dandelion",
+      "Chicory"
+    ],
+    "advantages": "Artichoke improves digestive efficiency. It supports healthy liver activity. The plant helps in managing cholesterol naturally. It is useful for metabolic wellness.",
+    "sideEffectsCaution": "Some people may experience gas or bloating. Allergic reactions are possible in sensitive individuals. It should be avoided in bile duct obstruction. Medicinal extracts should be used carefully.",
+    "disadvantages": "Artichoke benefits are limited mainly to digestion and liver health. Overuse may cause abdominal discomfort. It is not suitable for people with gallstones. Continuous heavy intake may reduce appetite."
+  },
+  {
+    "srNo": 40,
+    "commonName": "Slippery Elm",
+    "scientificName": "Ulmus rubra",
+    "description": "Slippery Elm is a medicinal tree known for its soothing inner bark. When mixed with water, the bark forms a gel-like substance that coats and protects tissues. This plant is mainly valued for its calming effect on the digestive and respiratory systems. Slippery Elm has been used traditionally to ease irritation and dryness inside the body. It grows naturally in forest regions. The plant is respected for its gentle and protective nature.",
+    "medicinalUses": "Slippery Elm is used to soothe sore throat and cough. It helps in relieving stomach irritation and acid discomfort. The herb supports gut lining protection. It is also used in ulcers and inflammatory digestive conditions.",
+    "relatedPlants": [
+      "Marshmallow Root",
+      "Licorice",
+      "Plantain Leaf"
+    ],
+    "advantages": "Slippery Elm provides natural coating and protection to tissues. It calms irritation in the throat and stomach. The herb is gentle and suitable for sensitive digestion. It supports healing without strong stimulation.",
+    "sideEffectsCaution": "Excess use may interfere with medicine absorption. Some people may experience mild bloating. It should be taken separately from other medicines. Proper dosage is important.",
+    "disadvantages": "Slippery Elm acts slowly and needs repeated use. It has a bland taste that many people dislike. Overuse may reduce appetite temporarily. It is not easily available in fresh form."
+  },
+  {
+    "srNo": 41,
+    "commonName": "Psyllium",
+    "scientificName": "Plantago ovata",
+    "description": "Psyllium is a medicinal plant mainly known for its fiber-rich seed husk. It absorbs water and forms a gel-like mass that supports bowel movement. This plant is widely used for digestive regulation and gut comfort. Psyllium is gentle in action and suitable for regular dietary support. It is commonly used in natural laxatives and health supplements. The plant plays an important role in digestive wellness.",
+    "medicinalUses": "Psyllium is used to relieve constipation and regulate bowel habits. It helps in improving gut health and stool consistency. The fiber supports cholesterol management. It is also used to support blood sugar balance.",
+    "relatedPlants": [
+      "Flaxseed",
+      "Chia Seeds",
+      "Fenugreek"
+    ],
+    "advantages": "Psyllium improves digestion through natural fiber. It is gentle and non-habit forming. The plant supports heart and gut health. It is suitable for long-term dietary use.",
+    "sideEffectsCaution": "Insufficient water intake may cause bloating. Some people may feel fullness or gas. It should be taken with plenty of fluids. Start with small doses.",
+    "disadvantages": "Psyllium works slowly and requires consistency. It may feel unpleasant to consume due to texture. Overuse without water can worsen constipation. It is less effective for acute digestive issues."
+  },
+  {
+    "srNo": 42,
+    "commonName": "Senna",
+    "scientificName": "Cassia angustifolia",
+    "description": "Senna is a medicinal plant mainly known for its strong action on bowel movement. The leaves and pods of this plant are used in herbal preparations. Senna works by stimulating intestinal activity. It has been used traditionally for short-term digestive cleansing. This plant is commonly included in natural laxative products. Senna is valued for its fast-acting nature.",
+    "medicinalUses": "Senna is used to relieve occasional constipation. It helps in clearing the bowels before medical procedures. The plant supports short-term digestive cleansing. It is also used in detox formulations.",
+    "relatedPlants": [
+      "Aloe Vera",
+      "Cascara Sagrada",
+      "Psyllium"
+    ],
+    "advantages": "Senna works quickly for constipation relief. It is effective even in small doses. The plant is widely available in herbal form. It is useful for short-term digestive support.",
+    "sideEffectsCaution": "Excess use may cause stomach cramps. Some people may experience diarrhea or weakness. Long-term use is not recommended. Senna should be used only occasionally.",
+    "disadvantages": "Senna can cause dependency if used regularly. It may weaken natural bowel function over time. Overuse can lead to dehydration. It is not suitable for daily or long-term use."
+  },
+  {
+    "srNo": 43,
+    "commonName": "Haritaki",
+    "scientificName": "Terminalia chebula",
+    "description": "Haritaki is a highly respected medicinal fruit used in traditional herbal systems. It is known for its balancing effect on digestion and body cleansing. The dried fruit is commonly used in powders and formulations. Haritaki supports internal purification and long-term wellness. This plant is often called the “king of medicines” in Ayurveda. It plays an important role in digestive and detox practices.",
+    "medicinalUses": "Haritaki is used to regulate bowel movement and improve digestion. It helps in removing toxins from the body. The fruit supports respiratory and throat health. It is also used in improving appetite and metabolism.",
+    "relatedPlants": [
+      "Bibhitaki",
+      "Amla",
+      "Triphala"
+    ],
+    "advantages": "Haritaki supports natural detoxification. It improves digestive strength gradually. The plant balances body systems gently. It is useful for long-term wellness routines.",
+    "sideEffectsCaution": "Excess use may cause dryness or dehydration. Some people may feel stomach irritation initially. It should be taken with proper dosage. Adequate water intake is important.",
+    "disadvantages": "Haritaki has a strong bitter-astringent taste that many people dislike. Results take time and need regular use. Overuse may reduce body moisture. It is not suitable during extreme weakness or dehydration."
+  },
+  {
+    "srNo": 44,
+    "commonName": "Bibhitaki",
+    "scientificName": "Terminalia bellirica",
+    "description": "Bibhitaki is a traditional medicinal tree whose dried fruit is widely used in herbal medicine. It is known for its balancing action on digestion and respiratory health. Bibhitaki supports internal cleansing and tissue strength. The fruit is commonly included in classical formulations. This plant is valued for its stabilizing and grounding nature. Bibhitaki plays an important role in long-term wellness practices.",
+    "medicinalUses": "Bibhitaki is used to support respiratory comfort and clear excess mucus. It helps in regulating digestion and bowel movement. The fruit supports eye and throat health. It is also used to maintain cholesterol balance.",
+    "relatedPlants": [
+      "Haritaki",
+      "Amla",
+      "Licorice"
+    ],
+    "advantages": "Bibhitaki helps balance digestion gently. It supports respiratory system strength. The plant aids internal cleansing without strong stimulation. It is useful for long-term health support.",
+    "sideEffectsCaution": "Excess intake may cause dryness in the mouth or throat. Some people may feel heaviness in digestion. It should be taken with proper dosage. Adequate hydration is advised.",
+    "disadvantages": "Bibhitaki has a dry and astringent taste that many people dislike. Its effects are slow and require patience. Overuse may increase dryness in the body. It is not suitable during dehydration or severe weakness."
+  },
+  {
+    "srNo": 45,
+    "commonName": "Bibhitaki",
+    "scientificName": "Terminalia bellirica",
+    "description": "Bibhitaki is a medicinal fruit-bearing tree known for supporting internal balance. The fruit is dried and used in various herbal preparations. Bibhitaki is valued for its cleansing effect on body channels. It helps maintain harmony between digestion and respiration. This plant is traditionally used in long-term health routines. Bibhitaki is respected for its stabilizing nature in herbal systems.",
+    "medicinalUses": "Bibhitaki is used to manage excess mucus in the body. It helps in improving voice clarity and throat comfort. The fruit supports bowel regulation and gut health. It is also used to maintain lipid balance in the body.",
+    "relatedPlants": [
+      "Haritaki",
+      "Amla",
+      "Arjuna"
+    ],
+    "advantages": "Bibhitaki helps clear internal blockages gently. It supports respiratory cleanliness. The plant promotes gradual digestive balance. It is suitable for long-term controlled use.",
+    "sideEffectsCaution": "Excess use may cause throat dryness. Some people may feel reduced appetite initially. Proper dosage is necessary for safe use. It should be taken with sufficient fluids.",
+    "disadvantages": "Bibhitaki is slow in action and not suitable for quick relief. Its dry nature may worsen dehydration. Overuse can reduce body lubrication. The fruit is difficult to consume due to its hard texture."
+  },
+  {
+    "srNo": 46,
+    "commonName": "Gotu Kola",
+    "scientificName": "Centella asiatica",
+    "description": "Gotu Kola is a small medicinal herb widely known for its role in mental and skin wellness. It grows close to the ground and prefers moist environments. This plant is valued for improving circulation and tissue repair. Gotu Kola has been traditionally used to support clarity of mind and calmness. It is commonly included in herbal tonics and creams. The herb is respected for its rejuvenating properties.",
+    "medicinalUses": "Gotu Kola is used to enhance memory and concentration. It helps in healing wounds and improving skin health. The herb supports blood circulation and reduces mental fatigue. It is also used in stress-related conditions.",
+    "relatedPlants": [
+      "Brahmi",
+      "Ginkgo",
+      "Shankhpushpi"
+    ],
+    "advantages": "Gotu Kola supports brain function gently. It improves skin repair and tissue strength. The plant enhances circulation naturally. It is useful for both internal and external applications.",
+    "sideEffectsCaution": "Excess intake may cause headache or dizziness. Some people may feel stomach discomfort. Long-term high doses are not recommended. Proper dosage should be followed.",
+    "disadvantages": "Gotu Kola works gradually and needs consistent use. Its taste is bland and may be unpleasant. Overuse may cause heaviness in the head. It is not suitable for people with liver sensitivity."
+  },
+  {
+    "srNo": 47,
+    "commonName": "Calendula",
+    "scientificName": "Calendula officinalis",
+    "description": "Calendula is a bright flowering medicinal plant known for its healing effect on skin. The orange and yellow flowers are mainly used in herbal preparations. Calendula supports natural tissue repair and protection. This plant is widely used in creams, ointments, and balms. It grows easily in gardens and requires minimal care. Calendula is valued for its gentle and restorative nature.",
+    "medicinalUses": "Calendula is used to heal cuts, wounds, and minor burns. It helps in reducing skin inflammation and irritation. The plant supports recovery from rashes and infections. It is also used in mouth rinses for gum health.",
+    "relatedPlants": [
+      "Aloe Vera",
+      "Chamomile",
+      "Lavender"
+    ],
+    "advantages": "Calendula promotes fast skin healing naturally. It is gentle and safe for sensitive skin. The plant has antibacterial properties. It is widely used in natural skin-care products.",
+    "sideEffectsCaution": "Some people may experience skin allergy. Internal use should be limited. Pregnant women should avoid medicinal doses. Patch testing is advised before external use.",
+    "disadvantages": "Calendula is mainly limited to external applications. Its benefits are less effective for internal diseases. Overuse on skin may cause dryness. The plant has a short flowering season."
+  },
+  {
+    "srNo": 48,
+    "commonName": "Tea Tree",
+    "scientificName": "Melaleuca alternifolia",
+    "description": "Tea Tree is a medicinal plant best known for its powerful essential oil. The leaves of this plant are used to extract oil with strong cleansing properties. Tea Tree supports skin hygiene and infection control. It is widely used in natural personal-care products. This plant grows well in warm climates. Tea Tree is valued for its purifying and protective nature.",
+    "medicinalUses": "Tea Tree is used to treat skin infections and acne. It helps in controlling fungal and bacterial growth. The oil supports scalp health and dandruff control. It is also used for minor cuts and insect bites.",
+    "relatedPlants": [
+      "Eucalyptus",
+      "Neem",
+      "Lavender"
+    ],
+    "advantages": "Tea Tree has strong antimicrobial action. It supports clear and healthy skin. The oil works effectively in small amounts. It is widely used in natural skincare.",
+    "sideEffectsCaution": "Tea Tree oil should never be consumed internally. Some people may experience skin irritation. It must always be diluted before application. Avoid contact with eyes.",
+    "disadvantages": "Tea Tree oil has a very strong smell that many people dislike. Overuse can dry out the skin. It is not suitable for direct application. Continuous use may cause skin sensitivity."
+  },
+  {
+    "srNo": 49,
+    "commonName": "Witch Hazel",
+    "scientificName": "Hamamelis virginiana",
+    "description": "Witch Hazel is a medicinal shrub widely known for its tightening and soothing properties. The leaves and bark of the plant are used in herbal preparations. Witch Hazel is mainly valued for skin and vascular care. It has been traditionally used to reduce irritation and swelling. This plant grows well in temperate regions. Witch Hazel is respected for its cooling and toning nature.",
+    "medicinalUses": "Witch Hazel is used to reduce skin inflammation and redness. It helps in soothing hemorrhoids and minor wounds. The extract supports vein health and reduces swelling. It is also used in skin toners and lotions.",
+    "relatedPlants": [
+      "Calendula",
+      "Aloe Vera",
+      "Chamomile"
+    ],
+    "advantages": "Witch Hazel tightens skin naturally. It reduces irritation and swelling effectively. The plant supports vascular comfort. It is gentle for external use.",
+    "sideEffectsCaution": "Excess use may dry out the skin. Some people may experience irritation. Internal use should be avoided. Patch testing is recommended before application.",
+    "disadvantages": "Witch Hazel is mainly limited to external applications. Overuse can reduce natural skin moisture. It is less effective for deep skin conditions. Long-term heavy use may cause skin sensitivity."
+  },
+  {
+    "srNo": 50,
+    "commonName": "Rose",
+    "scientificName": "Rosa spp.",
+    "description": "Rose is a widely admired flowering medicinal plant known for its beauty and fragrance. The petals of rose are commonly used in herbal preparations and natural products. Rose has a cooling and soothing effect on the body and mind. It supports emotional balance and gentle nourishment. This plant is grown in gardens all over the world. Rose holds an important place in traditional wellness and beauty practices.",
+    "medicinalUses": "Rose is used to calm the mind and reduce stress. It helps in cooling the body and improving digestion. Rose supports skin health and hydration. It is also used in eye care and herbal drinks like rose water.",
+    "relatedPlants": [
+      "Hibiscus",
+      "Lavender",
+      "Jasmine"
+    ],
+    "advantages": "Rose cools and refreshes the body naturally. It supports skin and emotional wellness. The plant has a pleasant aroma and gentle action. It is widely used in herbal cosmetics and remedies.",
+    "sideEffectsCaution": "Excess internal use may cause mild stomach discomfort. Some people may experience allergy to fragrance. Concentrated rose products should be used carefully. Moderation is advised.",
+    "disadvantages": "Rose has very mild medicinal action and works slowly. It is not suitable for strong or acute treatments. Fresh petals are not easily available everywhere. Overuse of scented products may cause headache in sensitive people."
+  },
+  {
+    "srNo": 51,
+    "commonName": "Sandalwood",
+    "scientificName": "Santalum album",
+    "description": "Sandalwood is a precious medicinal tree famous for its cooling fragrance and therapeutic value. The heartwood is mainly used to obtain sandalwood paste and oil. This plant is known for calming the mind and cooling the body. Sandalwood has been valued for centuries in traditional health and spiritual practices. It grows slowly and requires careful cultivation. The plant is respected for its purity and soothing nature.",
+    "medicinalUses": "Sandalwood is used to cool the body and reduce excess heat. It helps in soothing skin irritation and rashes. The paste supports mental calmness and stress relief. Sandalwood oil is also used in aromatherapy.",
+    "relatedPlants": [
+      "Vetiver",
+      "Rose",
+      "Turmeric"
+    ],
+    "advantages": "Sandalwood provides natural cooling and relaxation. It supports skin comfort and clarity. The aroma helps in calming emotions. It is widely used in wellness and spiritual care.",
+    "sideEffectsCaution": "Excess application may cause skin dryness. Some people may develop sensitivity to the oil. Internal use should be avoided without guidance. Use only in small and controlled amounts.",
+    "disadvantages": "Sandalwood is very expensive and not easily available. The tree grows slowly and takes many years to mature. Overharvesting has reduced its availability. Fake or low-quality products are common in the market."
+  },
+  {
+    "srNo": 52,
+    "commonName": "Henna",
+    "scientificName": "Lawsonia inermis",
+    "description": "Henna is a medicinal and dye-yielding plant widely known for its cooling and protective properties. The leaves are dried and powdered for various traditional uses. Henna supports skin comfort and hair care naturally. This plant thrives in warm, dry climates and is easy to cultivate. Henna has been used for centuries in cultural, cosmetic, and wellness practices. It is valued for its gentle yet effective action.",
+    "medicinalUses": "Henna is used to cool the body and soothe skin irritation. It helps in strengthening hair and reducing dandruff. The paste supports wound healing and minor burns. Henna is also used to calm headaches when applied externally.",
+    "relatedPlants": [
+      "Neem",
+      "Aloe Vera",
+      "Sandalwood"
+    ],
+    "advantages": "Henna cools and protects the skin naturally. It supports healthy hair and scalp. The plant has mild antibacterial properties. It is safe for external use when prepared properly.",
+    "sideEffectsCaution": "Some people may experience skin allergy from impure henna. Chemical-mixed henna should be avoided. Patch testing is recommended before use. Use only natural, additive-free henna.",
+    "disadvantages": "Henna stains the skin and hair temporarily, which may not be desired by everyone. The color result varies by skin and hair type. Overuse can dry the hair. Fresh leaves are not easily available everywhere."
+  },
+  {
+    "srNo": 53,
+    "commonName": "Bhringraj",
+    "scientificName": "Eclipta alba",
+    "description": "Bhringraj is a well-known medicinal herb traditionally valued for hair and liver support. It is a small leafy plant that grows in moist areas. Bhringraj is often called the “king of hair herbs” due to its nourishing effect. This plant supports internal balance and rejuvenation. It has been used for a long time in herbal oils and powders. Bhringraj holds an important place in traditional wellness practices.",
+    "medicinalUses": "Bhringraj is used to promote hair growth and reduce hair fall. It helps in supporting liver function and detoxification. The herb supports better sleep and mental calmness. It is also used to improve digestion and appetite.",
+    "relatedPlants": [
+      "Amla",
+      "Brahmi",
+      "Henna"
+    ],
+    "advantages": "Bhringraj strengthens hair roots naturally. It supports liver health gently. The herb helps in calming the nervous system. It is useful for long-term wellness routines.",
+    "sideEffectsCaution": "Excess intake may cause stomach discomfort. Some people may experience nausea. High doses are not recommended regularly. Proper dosage should be followed.",
+    "disadvantages": "Bhringraj works slowly and needs consistent use. Its taste is bitter and unpleasant for many people. Overuse may reduce digestive strength. Fresh plant availability is limited in some regions."
+  },
+  {
+    "srNo": 54,
+    "commonName": "Guggul",
+    "scientificName": "Commiphora mukul",
+    "description": "Guggul is a medicinal plant known for the resin obtained from its bark. This resin has been used for centuries in traditional herbal systems. Guggul supports internal purification and metabolic balance. The plant grows mainly in dry and arid regions. It is valued for its strong and penetrating nature. Guggul plays an important role in classical herbal formulations.",
+    "medicinalUses": "Guggul is used to support joint comfort and flexibility. It helps in managing cholesterol and lipid balance. The resin supports weight management and metabolism. It is also used in inflammatory and swelling-related conditions.",
+    "relatedPlants": [
+      "Shallaki (Boswellia)",
+      "Turmeric",
+      "Arjuna"
+    ],
+    "advantages": "Guggul supports healthy metabolism. It helps in reducing stiffness and discomfort. The plant supports internal cleansing processes. It is widely used in traditional formulations.",
+    "sideEffectsCaution": "Excess use may cause stomach irritation. Some people may experience headache or skin rash. It should be avoided during pregnancy. Medical guidance is advised for long-term use.",
+    "disadvantages": "Guggul resin has a strong smell that many people dislike. Overuse may increase body heat. It is not suitable for people with sensitive digestion. Continuous heavy intake can disturb hormonal balance."
+  },
+  {
+    "srNo": 55,
+    "commonName": "Flaxseed",
+    "scientificName": "Linum usitatissimum",
+    "description": "Flaxseed is a small but highly nutritious medicinal seed known for its rich fiber and oil content. It has been used traditionally for digestive and heart-related wellness. Flaxseed supports internal lubrication and gut comfort. The seeds are commonly consumed whole, ground, or as oil. This plant is cultivated widely in temperate regions. Flaxseed is valued for its gentle yet effective nutritional support.",
+    "medicinalUses": "Flaxseed is used to improve digestion and relieve constipation. It helps in maintaining heart health by supporting cholesterol balance. The seed supports joint comfort and skin nourishment. Flaxseed oil is also used for inflammation-related conditions.",
+    "relatedPlants": [
+      "Chia Seeds",
+      "Psyllium",
+      "Sesame"
+    ],
+    "advantages": "Flaxseed provides natural dietary fiber. It supports heart and digestive health. The seed helps in internal lubrication. It is suitable for long-term nutritional use.",
+    "sideEffectsCaution": "Excess intake may cause bloating or gas. Whole seeds should be consumed with adequate water. Some people may experience digestive discomfort initially. Start with small quantities.",
+    "disadvantages": "Flaxseed spoils quickly if not stored properly. Whole seeds may pass undigested if not chewed. Overuse can cause loose stools. The oil is sensitive to heat and light."
+  },
+  {
+    "srNo": 56,
+    "commonName": "Chia",
+    "scientificName": "Salvia hispanica",
+    "description": "Chia is a nutrient-dense medicinal seed plant valued for its ability to absorb water and form a gel. The seeds are tiny but rich in fiber, minerals, and healthy fats. Chia supports hydration and sustained energy in the body. It has been traditionally used for endurance and strength. The plant grows well in warm climates. Chia seeds are widely used in modern health diets.",
+    "medicinalUses": "Chia seeds are used to improve digestion and bowel regularity. They help in maintaining blood sugar balance. Chia supports heart health and sustained energy release. The seeds are also used for weight management.",
+    "relatedPlants": [
+      "Flaxseed",
+      "Psyllium",
+      "Sesame"
+    ],
+    "advantages": "Chia provides long-lasting energy. It supports digestive and heart wellness. The seeds help in hydration naturally. They are easy to include in daily diet.",
+    "sideEffectsCaution": "Dry seeds should not be consumed without soaking. Excess intake may cause bloating. Some people may feel stomach heaviness. Adequate water intake is necessary.",
+    "disadvantages": "Chia seeds can swell too much if misused. Overconsumption may slow digestion. Their mild taste may not be appealing to everyone. Improper soaking can cause discomfort."
+  },
+  {
+    "srNo": 57,
+    "commonName": "Hawthorn",
+    "scientificName": "Crataegus spp.",
+    "description": "Hawthorn is a medicinal shrub or small tree mainly valued for heart support. The berries, leaves, and flowers are used in herbal preparations. Hawthorn is known for gently strengthening cardiovascular function. This plant has been used traditionally in heart-tonic remedies. It grows well in temperate regions and hedgerows. Hawthorn is respected for its balancing and protective nature.",
+    "medicinalUses": "Hawthorn is used to support heart rhythm and circulation. It helps in maintaining healthy blood pressure levels. The plant supports blood vessel strength and endurance. It is also used in mild anxiety linked with heart weakness.",
+    "relatedPlants": [
+      "Arjuna",
+      "Garlic",
+      "Ginkgo"
+    ],
+    "advantages": "Hawthorn supports heart health gently. It improves circulation without strong stimulation. The plant helps in long-term cardiovascular balance. It is suitable for gradual heart support.",
+    "sideEffectsCaution": "Some people may experience dizziness initially. Hawthorn can interact with heart medications. It should be used under guidance for heart conditions. Dosage control is important.",
+    "disadvantages": "Hawthorn works slowly and needs long-term use. It is not effective for emergency heart issues. Overuse may cause fatigue. The berries are not easily available fresh everywhere."
+  },
+  {
+    "srNo": 58,
+    "commonName": "Olive Leaf",
+    "scientificName": "Olea europaea",
+    "description": "Olive Leaf is a medicinal plant part obtained from the olive tree and valued for its protective properties. The leaves contain natural compounds that support internal defense. Olive Leaf has been used traditionally in wellness practices for maintaining vitality. It is commonly processed into extracts and teas. This plant part supports overall balance in the body. Olive Leaf is respected for its strengthening and cleansing nature.",
+    "medicinalUses": "Olive Leaf is used to support immune function. It helps in maintaining healthy blood pressure levels. The leaf supports antioxidant activity in the body. It is also used in managing mild infections and inflammation.",
+    "relatedPlants": [
+      "Garlic",
+      "Oregano",
+      "Hawthorn"
+    ],
+    "advantages": "Olive Leaf supports natural immunity. It helps protect cells from oxidative stress. The plant part supports cardiovascular wellness. It is useful for long-term health maintenance.",
+    "sideEffectsCaution": "Excess intake may cause headache or fatigue initially. Some people may feel stomach discomfort. It may lower blood pressure in sensitive individuals. Proper dosage is important.",
+    "disadvantages": "Olive Leaf is mainly available in processed form. Its taste is bitter and unpleasant for many people. Overuse may cause weakness. It is less effective for acute health conditions."
+  },
+  {
+    "srNo": 59,
+    "commonName": "Nettle",
+    "scientificName": "Urtica dioica",
+    "description": "Nettle is a medicinal herb known for its nutrient-rich leaves and tiny stinging hairs. Despite its sting, the plant is highly valued once dried or cooked. Nettle supports overall nourishment and strength in the body. It has been traditionally used as a tonic herb. This plant grows widely in temperate regions. Nettle is respected for its revitalizing nature.",
+    "medicinalUses": "Nettle is used to support joint comfort and reduce inflammation. It helps in improving blood quality and mineral balance. The herb supports urinary and kidney health. It is also used in seasonal allergy relief.",
+    "relatedPlants": [
+      "Dandelion",
+      "Horsetail",
+      "Alfalfa"
+    ],
+    "advantages": "Nettle provides natural minerals and nutrients. It supports joint and muscle comfort. The plant helps in gentle detoxification. It is useful for long-term nutritional support.",
+    "sideEffectsCaution": "Fresh nettle can irritate the skin if touched directly. Excess intake may cause stomach discomfort. Some people may experience allergic reactions. Proper preparation is essential.",
+    "disadvantages": "Nettle must be handled carefully due to its sting. Its taste is earthy and not liked by everyone. Overuse may increase urination. Fresh plant availability is seasonal."
+  },
+  {
+    "srNo": 60,
+    "commonName": "Elderberry",
+    "scientificName": "Sambucus nigra",
+    "description": "Elderberry is a medicinal shrub known for its dark berries and traditional healing value. The berries and flowers are commonly used after proper processing. Elderberry is especially valued for seasonal wellness support. This plant has been used for centuries in natural remedies. It grows in temperate climates and woodland areas. Elderberry is respected for its protective and strengthening nature.",
+    "medicinalUses": "Elderberry is used to support immune response during cold and flu seasons. It helps in reducing fever and body discomfort. The berries support respiratory comfort. Elderflower is also used in herbal teas for congestion relief.",
+    "relatedPlants": [
+      "Rosehip",
+      "Hawthorn",
+      "Echinacea"
+    ],
+    "advantages": "Elderberry supports natural immunity. It helps the body recover faster from seasonal illness. The plant has antioxidant properties. It is useful for short-term immune support.",
+    "sideEffectsCaution": "Raw elderberries should not be consumed. Excess intake may cause nausea or stomach upset. Proper preparation is essential. It should be used in recommended amounts only.",
+    "disadvantages": "Elderberry requires correct processing before use. Fresh berries are not easily available everywhere. Overuse may strain digestion. It is not suitable for continuous daily use over long periods."
+  },
+  {
+    "srNo": 61,
+    "commonName": "Echinacea",
+    "scientificName": "Echinacea purpurea",
+    "description": "Echinacea is a flowering medicinal plant widely known for its immune-supporting properties. It has cone-shaped purple flowers and is commonly grown in herbal gardens. This plant is valued for helping the body resist infections naturally. Echinacea has been used in traditional remedies for seasonal health care. It grows well in open, sunny areas. The plant is respected for its protective action on body defenses.",
+    "medicinalUses": "Echinacea is used to strengthen the immune system. It helps the body fight colds, flu, and infections. The herb supports faster recovery during illness. It is also used to reduce inflammation and fatigue.",
+    "relatedPlants": [
+      "Elderberry",
+      "Astragalus",
+      "Goldenseal"
+    ],
+    "advantages": "Echinacea boosts natural immunity. It helps reduce the severity of infections. The plant supports faster healing response. It is effective when used at the right time.",
+    "sideEffectsCaution": "Some people may experience allergic reactions. Long-term continuous use is not advised. It may cause stomach discomfort in sensitive individuals. Use in limited courses.",
+    "disadvantages": "Echinacea is less effective if used daily for long periods. It may not suit people with autoimmune disorders. Overuse can reduce its effectiveness. The plant works best for short-term immune support."
+  },
+  {
+    "srNo": 62,
+    "commonName": "Astragalus",
+    "scientificName": "Astragalus membranaceus",
+    "description": "Astragalus is a medicinal root widely used for strengthening the body’s defense system. It is considered a long-term vitality-support herb rather than a quick remedy. This plant helps build internal resilience and stamina. Astragalus has been used traditionally to support overall endurance. It grows mainly in mountainous regions. The herb is respected for its tonifying and protective nature.",
+    "medicinalUses": "Astragalus is used to support immune strength over time. It helps in improving energy levels and resistance to illness. The root supports respiratory health and recovery from weakness. It is also used in fatigue and stress-related conditions.",
+    "relatedPlants": [
+      "Echinacea",
+      "Ginseng",
+      "Licorice"
+    ],
+    "advantages": "Astragalus strengthens immunity gradually. It improves stamina and vitality. The plant supports long-term wellness. It is suitable for preventive health routines.",
+    "sideEffectsCaution": "Excess intake may cause bloating in some people. It should not be used during acute fever or infection. Some individuals may experience digestive discomfort. Use under guidance for long-term intake.",
+    "disadvantages": "Astragalus works very slowly and requires patience. It is not effective for immediate illness relief. Overuse may overstimulate immunity. The root is not easily available in fresh form."
+  },
+  {
+    "srNo": 63,
+    "commonName": "Schisandra",
+    "scientificName": "Schisandra chinensis",
+    "description": "Schisandra is a medicinal climbing plant known for its small red berries. It is famous for having five different tastes in one fruit. Schisandra is valued for supporting balance between body and mind. This plant is traditionally used to improve endurance and adaptability. It grows mainly in cooler forest regions. Schisandra is respected as a rejuvenating and stabilizing herb.",
+    "medicinalUses": "Schisandra is used to support liver function and detoxification. It helps improve mental focus and physical stamina. The berries support stress resistance and nervous system balance. It is also used to support respiratory endurance.",
+    "relatedPlants": [
+      "Astragalus",
+      "Ginseng",
+      "Goji Berry"
+    ],
+    "advantages": "Schisandra improves stress tolerance naturally. It supports liver and mental performance. The plant enhances stamina and concentration. It is useful for long-term vitality support.",
+    "sideEffectsCaution": "Excess intake may cause heartburn or stomach upset. Some people may experience restlessness. High doses are not advised initially. Start with small amounts.",
+    "disadvantages": "Schisandra berries have a strong taste that many people find unpleasant. Overuse may cause internal heat. It is not suitable for people with gastric sensitivity. Continuous heavy intake may disturb sleep patterns."
+  },
+  {
+    "srNo": 64,
+    "commonName": "Rhodiola",
+    "scientificName": "Rhodiola rosea",
+    "description": "Rhodiola is a medicinal plant known for helping the body adapt to physical and mental stress. The root of this plant is mainly used in herbal preparations. Rhodiola grows in cold, mountainous regions and has a strong survival nature. It supports balance between energy and calmness. This plant has been traditionally used to improve resilience. Rhodiola is respected as an adaptogenic herb.",
+    "medicinalUses": "Rhodiola is used to reduce fatigue and improve endurance. It helps in managing stress and mental pressure. The herb supports concentration and work performance. It is also used to support mood balance.",
+    "relatedPlants": [
+      "Ashwagandha",
+      "Ginseng",
+      "Schisandra"
+    ],
+    "advantages": "Rhodiola improves stress tolerance. It supports mental and physical stamina. The plant helps reduce exhaustion. It is useful for people under high pressure.",
+    "sideEffectsCaution": "Excess use may cause restlessness or irritability. Some people may feel dryness in mouth. It should be avoided at night. Start with small doses.",
+    "disadvantages": "Rhodiola can be overstimulating for sensitive individuals. It is not suitable for long-term continuous use without breaks. Overuse may disturb sleep. The root is not easily available in fresh form."
+  },
+  {
+    "srNo": 65,
+    "commonName": "Cayenne",
+    "scientificName": "Capsicum annuum",
+    "description": "Cayenne is a medicinal spice plant known for its intense heat and stimulating nature. The dried red chili fruits are used in herbal and dietary preparations. Cayenne activates circulation and generates internal warmth. This plant has been traditionally used to energize body systems. It grows well in warm climates and home gardens. Cayenne is respected for its fast-acting and powerful qualities.",
+    "medicinalUses": "Cayenne is used to improve blood circulation and warmth. It helps stimulate digestion and metabolism. The spice supports pain relief by increasing blood flow. It is also used in topical preparations for muscle discomfort.",
+    "relatedPlants": [
+      "Ginger",
+      "Black Pepper",
+      "Paprika"
+    ],
+    "advantages": "Cayenne boosts circulation quickly. It supports digestion and metabolism. The plant helps reduce pain sensation naturally. Small amounts are highly effective.",
+    "sideEffectsCaution": "Excess intake may cause burning sensation and stomach irritation. Sensitive individuals may experience sweating or flushing. Avoid contact with eyes and broken skin. Use in very small quantities.",
+    "disadvantages": "Cayenne is too hot for many people to tolerate. Overuse can damage stomach lining. It is unsuitable for ulcers or acidity conditions. Continuous heavy use may cause internal irritation."
+  },
+  {
+    "srNo": 66,
+    "commonName": "Boswellia",
+    "scientificName": "Boswellia serrata",
+    "description": "Boswellia is a medicinal tree known for the resin obtained from its bark. This resin has been traditionally used for joint and tissue comfort. Boswellia supports movement and flexibility in the body. The tree grows mainly in dry, hilly regions. It has been valued for centuries in classical herbal systems. Boswellia is respected for its soothing and stabilizing action.",
+    "medicinalUses": "Boswellia is used to reduce joint stiffness and discomfort. It helps in supporting healthy inflammatory response. The resin supports mobility and flexibility. It is also used in muscle and connective tissue support.",
+    "relatedPlants": [
+      "Guggul",
+      "Turmeric",
+      "Ginger"
+    ],
+    "advantages": "Boswellia supports joint comfort naturally. It helps improve movement without strong side effects. The plant is suitable for long-term joint care. It supports overall mobility.",
+    "sideEffectsCaution": "Some people may experience mild stomach upset. Excess intake may cause nausea. It should be used carefully with other anti-inflammatory medicines. Proper dosage is important.",
+    "disadvantages": "Boswellia resin has a strong taste and smell. Results appear slowly and need consistent use. Overuse may reduce digestive strength. It is less effective for sudden or acute pain."
+  },
+  {
+    "srNo": 67,
+    "commonName": "Frankincense",
+    "scientificName": "Boswellia sacra",
+    "description": "Frankincense is a resin-producing medicinal tree known for its aromatic and healing qualities. The resin is obtained by making small cuts in the bark. Frankincense has been valued since ancient times for wellness and spiritual use. It supports calming of the mind and internal balance. This plant grows mainly in dry, rocky regions. Frankincense is respected for its grounding and purifying nature.",
+    "medicinalUses": "Frankincense is used to support joint and muscle comfort. It helps in calming inflammation and stiffness. The resin supports respiratory comfort when used in incense or oils. It is also used for mental relaxation and focus.",
+    "relatedPlants": [
+      "Boswellia serrata",
+      "Myrrh",
+      "Sandalwood"
+    ],
+    "advantages": "Frankincense supports calmness and relaxation. It helps in maintaining joint comfort. The aroma promotes mental clarity. It is useful in both physical and emotional wellness.",
+    "sideEffectsCaution": "Excess use may cause stomach irritation. Some people may experience headache from strong aroma. Internal use should be limited. Always use resin or oil in controlled amounts.",
+    "disadvantages": "Frankincense resin is expensive and not easily available. Overuse may cause dryness in the body. It works slowly and needs patience. The strong fragrance may not suit everyone."
+  },
+  {
+    "srNo": 68,
+    "commonName": "Mint",
+    "scientificName": "Mentha spp.",
+    "description": "Mint is a fast-growing aromatic herb known for its refreshing fragrance and cooling effect. The leaves are widely used in herbal remedies, food, and drinks. Mint supports freshness in the body and mind. This plant grows easily in moist soil and spreads quickly. It is commonly found in home gardens. Mint is valued for its quick and soothing action.",
+    "medicinalUses": "Mint is used to relieve indigestion and stomach discomfort. It helps in reducing nausea and headache. The herb supports respiratory freshness and throat comfort. Mint tea is also used for calming mild stress.",
+    "relatedPlants": [
+      "Peppermint",
+      "Lemon Balm",
+      "Basil"
+    ],
+    "advantages": "Mint provides instant cooling and freshness. It supports digestion gently. The plant helps in relieving minor aches. It is easy to grow and use daily.",
+    "sideEffectsCaution": "Excess use may cause acidity in sensitive individuals. Some people may experience mouth irritation. Strong mint oil should be diluted. Use in moderate quantity.",
+    "disadvantages": "Mint spreads aggressively and can overtake garden space. Overuse may cause cold sensitivity. Its strong cooling nature may not suit everyone. Continuous heavy intake can weaken digestion."
+  },
+  {
+    "srNo": 69,
+    "commonName": "Bay Leaf",
+    "scientificName": "Laurus nobilis",
+    "description": "Bay Leaf is an aromatic medicinal leaf commonly used in cooking and herbal remedies. It has a warm fragrance and slow-releasing flavor. Bay Leaf supports digestion and internal balance. The leaves are usually dried before use. This plant grows as a small tree or shrub. Bay Leaf is valued for its subtle yet effective action on the body.",
+    "medicinalUses": "Bay Leaf is used to improve digestion and reduce gas. It helps in regulating blood sugar levels. The leaf supports respiratory comfort when used in steam or teas. It is also used in joint stiffness relief.",
+    "relatedPlants": [
+      "Cinnamon",
+      "Clove",
+      "Cardamom"
+    ],
+    "advantages": "Bay Leaf supports digestion gently. It helps balance metabolism. The plant has mild antibacterial properties. It is easy to include in daily meals.",
+    "sideEffectsCaution": "Excess use may cause stomach irritation. Whole leaves should not be swallowed. Some people may experience allergic reactions. Use in moderate amounts.",
+    "disadvantages": "Bay Leaf has a slow effect and does not give quick results. Its hard texture makes it unsuitable for direct consumption. Overuse may cause dryness in the mouth. Fresh leaves are not easily available everywhere."
+  },
+  {
+    "srNo": 70,
+    "commonName": "Aparajita",
+    "scientificName": "Clitoria ternatea",
+    "description": "Aparajita is a beautiful flowering medicinal climber known for its deep blue or white flowers. It is widely used in traditional medicine for brain and nerve support. The plant is valued for its cooling and strengthening nature. Aparajita grows easily on fences and supports in gardens. It is often used in herbal teas and tonics. The plant holds an important place in cognitive and mental wellness practices.",
+    "medicinalUses": "Aparajita is used to improve memory and learning ability. It helps in calming the nervous system and reducing stress. The plant supports eye health and mental clarity. It is also used in mild anxiety and sleep-related issues.",
+    "relatedPlants": [
+      "Brahmi",
+      "Shankhpushpi",
+      "Gotu Kola"
+    ],
+    "advantages": "Aparajita supports brain health naturally. It helps in improving focus and calmness. The plant has antioxidant properties. It is useful for long-term mental wellness.",
+    "sideEffectsCaution": "Excess intake may cause stomach discomfort. Some people may feel drowsiness. High doses are not recommended regularly. Proper dosage should be followed.",
+    "disadvantages": "Aparajita shows gradual results and needs regular use. Its medicinal benefits are mild compared to stronger herbs. Overuse may reduce alertness. Fresh flowers are not available in all seasons."
+  },
+  {
+    "srNo": 71,
+    "commonName": "Butea",
+    "scientificName": "Butea monosperma",
+    "description": "Butea is a large flowering medicinal tree famous for its bright orange-red blossoms. It is commonly known as the “Flame of the Forest” because of its striking appearance. Different parts of the plant such as flowers, bark, and seeds are used in traditional medicine. Butea supports internal cleansing and body balance. The tree grows well in dry and tropical regions. It holds cultural as well as medicinal importance.",
+    "medicinalUses": "Butea is used to support digestive health and intestinal cleansing. It helps in managing worm infections naturally. The flowers are used for liver and blood-related support. It is also used in traditional remedies for skin conditions.",
+    "relatedPlants": [
+      "Neem",
+      "Haritaki",
+      "Bibhitaki"
+    ],
+    "advantages": "Butea supports natural detoxification. It helps maintain digestive cleanliness. The plant has anti-parasitic properties. It is widely used in traditional herbal practices.",
+    "sideEffectsCaution": "Excess use may cause stomach irritation. Some people may experience nausea. Proper dosage is important for safe use. Medical guidance is advised for internal use.",
+    "disadvantages": "Butea has a very strong medicinal action that may not suit sensitive individuals. Its taste is unpleasant for many people. Overuse may weaken digestion. Fresh medicinal parts are not available throughout the year."
+  }
+]

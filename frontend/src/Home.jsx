@@ -28,7 +28,8 @@ function Home() {
 
   const navigate = useNavigate();
 
-  const BASE_URL = "http://localhost:5000";
+  // ✅ FINAL: env based API (mobile friendly)
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
   const IMAGE_BASE_URL = `${BASE_URL}/images/`;
 
   const categories = [
@@ -59,16 +60,16 @@ function Home() {
     }
 
     fetchPlants();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchPlants = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/api/plants`);
-      console.log("🌱 Plants Fetched:", response.data);
       setPlants(response.data || []);
-      setLoading(false);
     } catch (error) {
       console.error("Error fetching plants:", error);
+    } finally {
       setLoading(false);
     }
   };
@@ -111,23 +112,22 @@ function Home() {
 
   // ✅ CORRECT IMAGE BUILDER (matches your DB)
   const getImageUrl = (plant) => {
-  const filename =
-    plant?.["Image 1"] ||
-    plant?.["Image 2"] ||
-    plant?.["Image 3"] ||
-    plant?.["Image 4"];
+    const filename =
+      plant?.["Image 1"] ||
+      plant?.["Image 2"] ||
+      plant?.["Image 3"] ||
+      plant?.["Image 4"];
 
-  if (!filename) return "/placeholder.png";
+    if (!filename) return FALLBACK_IMG;
 
-  const v = String(filename).trim();
+    const v = String(filename).trim();
 
-  // if already a full url
-  if (/^https?:\/\//i.test(v)) return v;
+    // if already a full url
+    if (/^https?:\/\//i.test(v)) return v;
 
-  // ✅ encode + cache bust
-  return `${IMAGE_BASE_URL}${encodeURIComponent(v)}?v=${plant?._id}`;
-};
-
+    // ✅ encode + cache bust
+    return `${IMAGE_BASE_URL}${encodeURIComponent(v)}?v=${plant?._id || Date.now()}`;
+  };
 
   // ✅ CORRECT FILTER (uses space-based keys)
   const filteredPlants = plants.filter((plant) => {
@@ -137,13 +137,10 @@ function Home() {
 
     const term = searchTerm.toLowerCase();
 
-    const matchesSearch =
-      commonName.includes(term) || sciName.includes(term);
+    const matchesSearch = commonName.includes(term) || sciName.includes(term);
 
     const matchesCategory =
-      selectedCategory === "All"
-        ? true
-        : uses.includes(selectedCategory.toLowerCase());
+      selectedCategory === "All" ? true : uses.includes(selectedCategory.toLowerCase());
 
     return matchesSearch && matchesCategory;
   });
@@ -229,9 +226,7 @@ function Home() {
             Explore Nature's Pharmacy
           </h2>
           <p className="text-green-600 text-sm md:text-lg">
-            {user
-              ? "Welcome back! Check your favorites ❤️"
-              : "Login to save your favorite plants & history."}
+            {user ? "Welcome back! Check your favorites ❤️" : "Login to save your favorite plants & history."}
           </p>
         </div>
 
@@ -263,7 +258,8 @@ function Home() {
                 return (
                   <div
                     key={plant._id}
-                    onClick={() => navigate(`/plant/${plant._id}`, { state: plant })}
+                    // ✅ FINAL: state pass band (fresh fetch in PlantDetails)
+                    onClick={() => navigate(`/plant/${plant._id}`)}
                     className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-green-100 flex flex-col h-full cursor-pointer group relative overflow-hidden"
                   >
                     <button
@@ -273,9 +269,7 @@ function Home() {
                       <Heart
                         size={22}
                         className={
-                          isFav
-                            ? "fill-red-500 text-red-500"
-                            : "text-gray-400 hover:text-red-500"
+                          isFav ? "fill-red-500 text-red-500" : "text-gray-400 hover:text-red-500"
                         }
                       />
                     </button>
