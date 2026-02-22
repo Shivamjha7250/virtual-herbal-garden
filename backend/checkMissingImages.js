@@ -23,8 +23,8 @@ fs.createReadStream(CSV_FILE)
     }
   })
   .on("end", () => {
-    console.log(`❌ Missing files: ${missing.length}`);
+    console.log(` Missing files: ${missing.length}`);
     console.table(missing.slice(0, 25));
     fs.writeFileSync("missing_images.json", JSON.stringify(missing, null, 2));
-    console.log("✅ Saved: missing_images.json");
+    console.log(" Saved: missing_images.json");
   });

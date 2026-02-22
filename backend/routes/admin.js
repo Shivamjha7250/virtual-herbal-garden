@@ -3,10 +3,8 @@ const router = express.Router();
 const Contribution = require('../models/Contribution');
 const Plant = require('../models/Plant');
 
-// 1. Saari Pending Requests Dekhna
 router.get('/requests', async (req, res) => {
   try {
-    // Sirf 'pending' requests lao aur User/Plant ka naam bhi dikhao
     const requests = await Contribution.find({ status: 'pending' })
       .populate('user', 'name email')
       .populate('plant', 'name');
@@ -16,7 +14,6 @@ router.get('/requests', async (req, res) => {
   }
 });
 
-// 2. Request Approve karna (Merge Logic)
 router.post('/approve/:id', async (req, res) => {
   try {
     const contribution = await Contribution.findById(req.params.id);
@@ -24,8 +21,6 @@ router.post('/approve/:id', async (req, res) => {
 
     const plant = await Plant.findById(contribution.plant);
     
-    // ✅ AUTOMATIC MERGE LOGIC
-    // Agar user ne naya Advantage bataya hai, toh Plant ke advantages array mein jod do
     if (contribution.suggestionType === 'advantage') {
       plant.advantages.push(contribution.content);
     } else if (contribution.suggestionType === 'disadvantage') {
@@ -34,9 +29,8 @@ router.post('/approve/:id', async (req, res) => {
       plant.uses.push(contribution.content);
     }
 
-    await plant.save(); // Main Plant update ho gaya!
+    await plant.save();
     
-    // Contribution ka status update karo
     contribution.status = 'approved';
     await contribution.save();
 

@@ -7,20 +7,18 @@ function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [otp, setOtp] = useState('');
-  const [step, setStep] = useState(1); // 1: Login Form, 2: OTP Form
+  const [step, setStep] = useState(1); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // ✅ Safe BASE_URL
+
   const BASE_URL = 'http://localhost:5000'; 
 
-  // Handle Input Changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(''); // Clear error on typing
+    setError('');
   };
 
-  // Step 1: Login Request
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -29,13 +27,11 @@ function Login() {
     try {
       const res = await axios.post(`${BASE_URL}/api/auth/login`, formData);
       
-      // ✅ Case 1: OTP Required (Normal User)
       if (res.data.requiresOtp) {
-        // Optional: Show a temporary success message
-        // alert(res.data.message); 
-        setStep(2); // Move to OTP Screen
+      
+        setStep(2); 
       } 
-      // ✅ Case 2: No OTP Required (Admin)
+
       else {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
@@ -50,7 +46,6 @@ function Login() {
     }
   };
 
-  // Step 2: Verify OTP Request
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -62,7 +57,6 @@ function Login() {
         otp: otp
       });
 
-      // ✅ Login Success after OTP
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
       
@@ -79,12 +73,9 @@ function Login() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-50 to-green-100 p-4 font-sans relative overflow-hidden">
       
-      {/* --- BACKGROUND DESIGN START --- */}
-      {/* Green Blobs */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
       <div className="absolute top-0 right-0 w-64 h-64 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
       
-      {/* Welcome Title */}
       <div className="text-center mb-8 z-10">
         <div className="flex justify-center mb-4">
           <div className="bg-green-100 p-4 rounded-full shadow-lg">
@@ -97,12 +88,9 @@ function Login() {
         </h1>
         <p className="text-green-700 mt-2 font-medium">Nature's Best Healing</p>
       </div>
-      {/* --- BACKGROUND DESIGN END --- */}
-
-      {/* --- MAIN CARD --- */}
+     
       <div className="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-2xl w-full max-w-md border border-white z-10">
         
-        {/* Error Message */}
         {error && (
           <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-xl text-sm text-center flex items-center justify-center gap-2 border border-red-200">
             <AlertCircle size={16}/> {error}
@@ -110,7 +98,7 @@ function Login() {
         )}
 
         {step === 1 ? (
-          /* --- STEP 1: LOGIN FORM --- */
+  
           <>
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Sign In to Your Account</h2>
             <form onSubmit={handleLogin} className="space-y-4">
@@ -152,7 +140,7 @@ function Login() {
             </div>
           </>
         ) : (
-          /* --- STEP 2: OTP FORM --- */
+          
           <div className="animate-in fade-in slide-in-from-right-8 duration-500">
             <div className="text-center mb-6">
               <h2 className="text-2xl font-bold text-green-800 mb-2">Verify OTP</h2>
@@ -171,7 +159,7 @@ function Login() {
                   maxLength="6"
                   className="w-full pl-10 p-3 bg-white border border-green-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none text-center text-xl tracking-widest font-bold text-gray-800"
                   value={otp} 
-                  onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))} // Only allow numbers
+                  onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, ''))}
                 />
               </div>
               

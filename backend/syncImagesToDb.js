@@ -15,15 +15,14 @@ const normalize = (s) =>
 
 (async () => {
   await mongoose.connect(process.env.MONGO_URI);
-  console.log("✅ MongoDB Connected");
+  console.log(" MongoDB Connected");
 
-  // Read all files from images folder
   const files = fs.existsSync(IMAGES_DIR) ? fs.readdirSync(IMAGES_DIR) : [];
   const fileSet = new Set(files);
 
   const plants = await Plant.find({});
-  console.log(`🌿 Plants in DB: ${plants.length}`);
-  console.log(`🖼️ Files in images/: ${files.length}`);
+  console.log(` Plants in DB: ${plants.length}`);
+  console.log(` Files in images/: ${files.length}`);
 
   let updated = 0;
 
@@ -31,22 +30,17 @@ const normalize = (s) =>
     const name = plant["Common Name"];
     const base = normalize(name);
 
-    // Try to find best match file for each slot
     const findFile = (slot) => {
-      // expected: base_1.jpg
       const expected = `${base}_${slot}.jpg`;
 
-      // exact match
       if (fileSet.has(expected)) return expected;
 
-      // try other extensions
       const exts = ["jpg", "jpeg", "png", "webp"];
       for (const ext of exts) {
         const alt = `${base}_${slot}.${ext}`;
         if (fileSet.has(alt)) return alt;
       }
 
-      // try startsWith (handles " (1)" etc.)
       const prefix = `${base}_${slot}`;
       const match = files.find((f) => normalize(f).startsWith(prefix));
       return match || "";
@@ -67,10 +61,10 @@ const normalize = (s) =>
       plant["Image 4"] = i4 || plant["Image 4"];
       await plant.save();
       updated++;
-      console.log(`✅ Updated: ${name}`);
+      console.log(` Updated: ${name}`);
     }
   }
 
-  console.log(`\n🎉 DONE! Updated plants: ${updated}`);
+  console.log(`\n DONE! Updated plants: ${updated}`);
   process.exit(0);
 })();

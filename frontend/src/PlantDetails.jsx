@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import {
@@ -12,11 +12,16 @@ import {
   Sprout,
   Info,
   Pencil,
+  X,
+  ZoomIn,
+  BadgeCheck,
+  Save,
 } from "lucide-react";
+import { BASE_URL } from "./config/api";
+import { mapPlant } from "./utils/plantMapper";
 import Plant3D from "./Plant3D";
 
 const FALLBACK_IMG = "/placeholder.png";
-const BASE_URL = "http://localhost:5000";
 
 function PlantDetails() {
   const { id } = useParams();
@@ -27,70 +32,70 @@ function PlantDetails() {
   const [show3D, setShow3D] = useState(false);
   const [activeImage, setActiveImage] = useState("");
   const [loading, setLoading] = useState(true);
+  const [zoomOpen, setZoomOpen] = useState(false);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [editingMeta, setEditingMeta] = useState(false);
+  const [savingMeta, setSavingMeta] = useState(false);
+  const categoriesList = ["General", "Immunity", "Skin Care", "Digestion", "Respiratory"];
+
+  const user = useMemo(() => {
+    try {
+      return JSON.parse(localStorage.getItem("user"));
+    } catch {
+      return null;
+    }
+  }, []);
 
   const buildImageUrl = (value, plantId) => {
     if (!value) return "";
     const v = String(value).trim();
     if (/^https?:\/\//i.test(v)) return v;
-    // ✅ cache-bust by updated time/id to force latest image
     return `${BASE_URL}/images/${encodeURIComponent(v)}?v=${plantId || Date.now()}`;
   };
 
   const getImagesFromPlant = (p) => {
-    if (!p) return [];
-    const plantId = p?._id;
-    return [
-      buildImageUrl(p?.["Image 1"], plantId),
-      buildImageUrl(p?.["Image 2"], plantId),
-      buildImageUrl(p?.["Image 3"], plantId),
-      buildImageUrl(p?.["Image 4"], plantId),
-    ].filter(Boolean);
+    if (!p?.images) return [];
+    return p.images.map((img) => buildImageUrl(img, p.id));
   };
 
-  // ✅ ALWAYS FETCH LATEST FROM API (fix)
-  useEffect(() => {
-    const fetchPlant = async () => {
-      try {
-        setLoading(true);
-        const res = await axios.get(`${BASE_URL}/api/plants/${id}`);
-        setPlant(res.data);
+  const fetchPlant = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(`${BASE_URL}/api/plants/${id}`);
+      const mapped = mapPlant(res.data);
+      setPlant(mapped);
 
-        const imgs = getImagesFromPlant(res.data);
-        setActiveImage(imgs[0] || "");
-      } catch (err) {
-        console.error("Fetch Error:", err);
-      } finally {
-        setLoading(false);
+      if (mapped.images?.length) {
+        setActiveImage(buildImageUrl(mapped.images[0], mapped.id));
+      } else {
+        setActiveImage(FALLBACK_IMG);
       }
-    };
+    } catch (err) {
+      console.error("Fetch Error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchPlant();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  // ✅ history (same)
   useEffect(() => {
     if (!plant || !user) return;
 
     axios
       .put(`${BASE_URL}/api/auth/history`, {
-        userId: user.id,
-        plantId: plant._id,
+        userId: user.id || user._id,
+        plantId: plant.id,
       })
       .catch((err) => console.error("History save failed:", err));
   }, [plant, user]);
 
-  const images = getImagesFromPlant(plant);
+  const images = useMemo(() => getImagesFromPlant(plant), [plant]);
 
   const handleDelete = async () => {
-    if (
-      !window.confirm(
-        `Are you sure you want to delete ${plant?.["Common Name"]}? This cannot be undone.`
-      )
-    )
-      return;
+    if (!window.confirm(`Are you sure you want to delete ${plant?.name}? This cannot be undone.`)) return;
 
     const token = localStorage.getItem("token");
     if (!token) {
@@ -99,11 +104,10 @@ function PlantDetails() {
     }
 
     try {
-      await axios.delete(`${BASE_URL}/api/plants/${plant._id}`, {
+      await axios.delete(`${BASE_URL}/api/plants/${plant.id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
-      alert("🗑️ Plant Deleted Successfully!");
+      alert(" Plant Deleted Successfully!");
       navigate("/");
     } catch (error) {
       console.error("Delete Error:", error);
@@ -111,19 +115,18 @@ function PlantDetails() {
     }
   };
 
+
   const goEditField = (field) => {
-    // ✅ IMPORTANT: do not rely on state for latest values
-    navigate(`/admin/plants/${plant._id}/edit?field=${encodeURIComponent(field)}`);
+    navigate(`/admin/plants/${plant.id}/edit?field=${encodeURIComponent(field)}`);
   };
 
   const EditIcon = ({ field }) => {
     if (!user || user.role !== "admin") return null;
-
     return (
       <button
         type="button"
         onClick={() => goEditField(field)}
-        className="p-1 rounded-md hover:bg-white/60 transition"
+        className="p-2 rounded-xl hover:bg-black/5 transition"
         title={`Edit ${field}`}
       >
         <Pencil size={18} className="text-gray-600 hover:text-blue-600" />
@@ -131,205 +134,359 @@ function PlantDetails() {
     );
   };
 
-  if (loading)
+  const currentCategory = useMemo(() => {
+    return plant?.raw?.["Category"] || plant?.category || "General";
+  }, [plant]);
+
+  const currentRegion = useMemo(() => {
+    return plant?.raw?.["Region"] || plant?.region || "";
+  }, [plant]);
+
+  const [meta, setMeta] = useState({ category: "General", region: "" });
+
+  useEffect(() => {
+    setMeta({
+      category: currentCategory || "General",
+      region: currentRegion || "",
+    });
+  }, [currentCategory, currentRegion]);
+
+  const saveCategoryRegion = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) return alert("Login again");
+
+    try {
+      setSavingMeta(true);
+      await axios.put(
+        `${BASE_URL}/api/plants/admin/category/${plant.id}`,
+        { category: meta.category, region: meta.region },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      alert(" Category/Region Updated");
+      setEditingMeta(false);
+
+      await fetchPlant();
+    } catch (err) {
+      console.error("Category save error:", err);
+      alert(err?.response?.data?.message || "Failed to update category/region");
+    } finally {
+      setSavingMeta(false);
+    }
+  };
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") setZoomOpen(false);
+    };
+    if (zoomOpen) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [zoomOpen]);
+
+  const imageFor3D = activeImage || FALLBACK_IMG;
+
+  if (loading) {
     return (
-      <div className="text-center mt-20 text-xl font-bold text-green-800 animate-pulse">
-        Loading Plant Details...
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50 to-white">
+        <div className="text-xl font-bold text-green-800 animate-pulse">Loading Plant Details...</div>
       </div>
     );
+  }
 
-  if (!plant)
-    return <div className="text-center mt-20 text-xl font-semibold text-red-600">Plant Not Found.</div>;
-
-  const imageFor3D = plant?.["3D Model Link"] || activeImage || FALLBACK_IMG;
+  if (!plant) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50 to-white">
+        <div className="text-2xl font-bold text-red-600">Plant Not Found.</div>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-green-50 p-4 md:p-8 font-sans">
-      <div className="flex justify-between items-center mb-6">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition shadow-md font-medium"
-        >
-          <ArrowLeft size={20} /> Back
-        </button>
+    <div className="min-h-screen bg-gradient-to-b from-green-50 via-emerald-50 to-white font-sans">
+     
+      <div className="sticky top-0 z-40 backdrop-blur-xl bg-white/70 border-b border-green-100">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 rounded-2xl bg-green-700 text-white px-4 py-2 shadow-sm hover:bg-green-800 transition"
+          >
+            <ArrowLeft size={20} /> Back
+          </button>
 
-        {user && user.role === "admin" && (
-          <div className="flex gap-3">
-            <button
-              onClick={() => navigate(`/admin/plants/${plant._id}/edit`)}
-              className="flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-200 transition font-bold border border-blue-200"
-            >
-              <Pencil size={20} /> Edit Plant
-            </button>
-
-            <button
-              onClick={handleDelete}
-              className="flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-lg hover:bg-red-200 transition font-bold border border-red-200"
-            >
-              <Trash2 size={20} /> Delete Plant
-            </button>
-          </div>
-        )}
-      </div>
-
-      <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-green-100">
-        <div className="flex flex-col lg:flex-row min-h-[600px]">
-          {/* LEFT: IMAGES */}
-          <div className="lg:w-1/2 bg-gray-100 p-6 flex flex-col gap-4">
-            <div className="w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-sm bg-white relative flex items-center justify-center border border-gray-200">
-              {show3D ? (
-                <Plant3D image={imageFor3D} />
-              ) : (
-                <img
-                  src={activeImage || FALLBACK_IMG}
-                  alt={plant?.["Common Name"] || "Plant"}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.src = FALLBACK_IMG;
-                  }}
-                />
-              )}
-
+          {user && user.role === "admin" && (
+            <div className="flex items-center gap-2">
               <button
-                onClick={() => setShow3D(!show3D)}
-                className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white/90 text-green-800 px-6 py-3 rounded-full font-bold shadow-lg flex items-center gap-2 hover:bg-white transition-all z-10 border border-green-200 backdrop-blur-md"
+                onClick={() => navigate(`/admin/plants/${plant.id}/edit`)}
+                className="flex items-center gap-2 rounded-2xl bg-blue-600 text-white px-4 py-2 shadow-sm hover:bg-blue-700 transition"
               >
-                {show3D ? (
-                  <>
-                    <Leaf size={20} /> Show Photo
-                  </>
-                ) : (
-                  <>
-                    <Box size={20} /> View in 3D Space
-                  </>
-                )}
+                <Pencil size={18} /> Edit Plant
+              </button>
+              <button
+                onClick={handleDelete}
+                className="flex items-center gap-2 rounded-2xl bg-red-600 text-white px-4 py-2 shadow-sm hover:bg-red-700 transition"
+              >
+                <Trash2 size={18} /> Delete
               </button>
             </div>
-
-            {/* Thumbnails */}
-            {images.length > 1 && (
-              <div className="flex gap-3 overflow-x-auto py-2 px-1 scrollbar-hide">
-                {images.map((img, index) => (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      setActiveImage(img);
-                      setShow3D(false);
-                    }}
-                    className={`w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden cursor-pointer border-2 transition-all shadow-sm ${
-                      activeImage === img
-                        ? "border-green-600 scale-105 ring-2 ring-green-200"
-                        : "border-white opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    <img
-                      src={img}
-                      className="w-full h-full object-cover"
-                      alt="thumb"
-                      onError={(e) => {
-                        e.currentTarget.src = FALLBACK_IMG;
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* RIGHT: DETAILS */}
-          <div className="lg:w-1/2 p-8 md:p-12 flex flex-col gap-6 bg-white">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-green-900 mb-2">
-                {plant?.["Common Name"]}
-              </h1>
-              <p className="text-xl text-green-600 italic font-medium">{plant?.["Scientific Name"]}</p>
-
-              <span className="inline-block mt-2 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-bold">
-                Uses: {plant?.["Uses"] || "General"}
-              </span>
-            </div>
-
-            {/* Medicinal Uses */}
-            <div className="bg-green-50 p-5 rounded-2xl border border-green-100">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-green-800 flex items-center gap-2 text-lg">
-                  <Activity size={20} className="text-green-600" /> Medicinal Uses
-                </h3>
-                <EditIcon field="Uses" />
-              </div>
-
-              <p className="text-green-800 leading-relaxed">{plant?.["Uses"] || "Not specified"}</p>
-            </div>
-
-            {/* Related + Advantages */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-bold text-blue-800 flex items-center gap-2 text-lg">
-                    <MapPin size={20} className="text-blue-600" /> Related Plants
-                  </h3>
-                  <EditIcon field="Related Plants" />
-                </div>
-
-                <p className="text-blue-900 font-medium text-lg">
-                  {plant?.["Related Plants"] || "Not specified"}
-                </p>
-              </div>
-
-              <div className="bg-orange-50 p-5 rounded-2xl border border-orange-100">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-bold text-orange-800 flex items-center gap-2 text-lg">
-                    <Sprout size={20} className="text-orange-600" /> Advantages
-                  </h3>
-                  <EditIcon field="Advantages" />
-                </div>
-
-                <p className="text-orange-900 font-medium text-lg">
-                  {plant?.["Advantages"] || "Not specified"}
-                </p>
-              </div>
-            </div>
-
-            {/* Side Effects */}
-            <div className="bg-red-50 p-5 rounded-2xl border border-red-100 flex items-start gap-3">
-              <ShieldAlert className="text-red-600 flex-shrink-0 mt-1" size={24} />
-              <div className="w-full">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-red-800 mb-1 text-lg">Side Effects / Caution</h3>
-                  <EditIcon field="Side Effects" />
-                </div>
-                <p className="text-red-900 leading-relaxed">{plant?.["Side Effects"] || "Not specified"}</p>
-              </div>
-            </div>
-
-            {/* Description + Disadvantages */}
-            <div className="mt-2 border-t pt-6 border-gray-100">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-bold text-gray-800 flex items-center gap-2 text-lg">
-                  <Info size={20} className="text-gray-600" /> Description
-                </h3>
-                <EditIcon field="Description" />
-              </div>
-
-              <p className="text-gray-700 leading-relaxed text-lg text-justify">
-                {plant?.["Description"] || "Not specified"}
-              </p>
-
-              <div className="mt-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-bold text-gray-800 text-lg">Disadvantages</h3>
-                  <EditIcon field="Disadvantages" />
-                </div>
-
-                <p className="text-gray-700 leading-relaxed text-lg text-justify">
-                  {plant?.["Disadvantages"] || "Not specified"}
-                </p>
-              </div>
-            </div>
-          </div>
-          {/* RIGHT END */}
+          )}
         </div>
       </div>
+
+      <div className="px-4 md:px-8 py-8">
+        <div className="max-w-7xl mx-auto bg-white/80 backdrop-blur rounded-3xl shadow-xl border border-green-100 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
+            <div className="lg:col-span-5 bg-gray-50 p-6 border-r border-gray-100">
+              <div className="relative w-full h-[420px] md:h-[560px] rounded-2xl overflow-hidden border bg-white shadow-sm group">
+                {show3D ? (
+                  <Plant3D image={imageFor3D} />
+                ) : (
+                  <button type="button" onClick={() => setZoomOpen(true)} className="w-full h-full relative">
+                    <img
+                      src={imageFor3D}
+                      alt={plant?.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => (e.currentTarget.src = FALLBACK_IMG)}
+                    />
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-white/90 border border-gray-200 shadow-sm text-sm font-semibold text-gray-800">
+                        <ZoomIn size={16} /> Zoom
+                      </span>
+                    </div>
+                  </button>
+                )}
+
+                <div className="absolute inset-x-0 bottom-4 flex justify-center">
+                  <button
+                    onClick={() => setShow3D(!show3D)}
+                    className="bg-white/90 text-green-900 px-5 py-3 rounded-2xl font-semibold shadow-lg border border-green-200 flex items-center gap-2 hover:bg-white transition"
+                  >
+                    {show3D ? (
+                      <>
+                        <Leaf size={18} /> Show Photo
+                      </>
+                    ) : (
+                      <>
+                        <Box size={18} /> View in 3D Space
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {images.length > 1 && (
+                <div className="flex gap-3 mt-4 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  {images.map((img, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setActiveImage(img);
+                        setShow3D(false);
+                      }}
+                      className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition ${
+                        activeImage === img ? "border-green-600 ring-4 ring-green-100" : "border-white"
+                      }`}
+                      title={`Image ${index + 1}`}
+                    >
+                      <img
+                        src={img}
+                        className="w-full h-full object-cover"
+                        alt="thumb"
+                        onError={(e) => (e.currentTarget.src = FALLBACK_IMG)}
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 text-green-800 text-xs font-semibold border border-green-200">
+                  <Leaf size={14} /> Herbal
+                </span>
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold border border-purple-200">
+                  <Leaf size={14} /> {currentCategory || "General"}
+                </span>
+
+                {currentRegion ? (
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold border border-blue-200">
+                    <MapPin size={14} /> {currentRegion}
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold border border-blue-200">
+                    <MapPin size={14} /> Details
+                  </span>
+                )}
+
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-semibold border border-orange-200">
+                  <Sprout size={14} /> Benefits
+                </span>
+
+                {plant?.scientificName && (
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 text-gray-800 text-xs font-semibold border border-gray-200">
+                    <BadgeCheck size={14} /> Identified
+                  </span>
+                )}
+              </div>
+
+              {user?.role === "admin" && (
+                <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-bold text-gray-900 flex items-center gap-2 text-lg">
+                      <MapPin size={18} /> Category / Region
+                    </h3>
+
+                    <button
+                      type="button"
+                      onClick={() => setEditingMeta((v) => !v)}
+                      className="px-3 py-2 rounded-xl border bg-gray-50 hover:bg-gray-100 font-bold text-sm"
+                    >
+                      {editingMeta ? "Cancel" : "Edit"}
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                    <div>
+                      <label className="text-xs font-bold text-slate-500">Category</label>
+                      <select
+                        disabled={!editingMeta}
+                        value={meta.category}
+                        onChange={(e) => setMeta({ ...meta, category: e.target.value })}
+                        className={`w-full mt-1 border rounded-xl p-3 bg-white ${
+                          !editingMeta ? "opacity-70" : ""
+                        }`}
+                      >
+                        {categoriesList.map((c) => (
+                          <option key={c} value={c}>
+                            {c}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-bold text-slate-500">Region</label>
+                      <input
+                        disabled={!editingMeta}
+                        value={meta.region}
+                        onChange={(e) => setMeta({ ...meta, region: e.target.value })}
+                        className={`w-full mt-1 border rounded-xl p-3 ${!editingMeta ? "opacity-70" : ""}`}
+                        placeholder="e.g. India"
+                      />
+                    </div>
+                  </div>
+
+                  {editingMeta && (
+                    <button
+                      type="button"
+                      onClick={saveCategoryRegion}
+                      disabled={savingMeta}
+                      className="mt-4 w-full flex items-center justify-center gap-2 bg-green-700 text-white font-bold py-3 rounded-xl hover:bg-green-800 transition disabled:opacity-60"
+                    >
+                      <Save size={18} /> {savingMeta ? "Saving..." : "Save"}
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="lg:col-span-7 p-8 md:p-10">
+              <h1 className="text-4xl md:text-5xl font-black text-green-950">{plant?.name}</h1>
+              <p className="mt-2 text-xl text-green-700 italic font-medium">
+                {plant?.scientificName || "Not specified"}
+              </p>
+
+              <div className="mt-8 space-y-6">
+               
+                <div className="rounded-2xl border border-green-100 bg-green-50 p-6 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-bold text-green-900 flex items-center gap-2 text-lg">
+                      <Activity size={20} /> Medicinal Uses
+                    </h3>
+                    <EditIcon field="Uses" />
+                  </div>
+                  <p className="mt-3 text-green-900 leading-relaxed">{plant?.uses || "Not specified"}</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="rounded-2xl border border-blue-100 bg-blue-50 p-5 shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-blue-900 flex gap-2 items-center text-lg">
+                        <MapPin size={20} /> Related Plants
+                      </h3>
+                      <EditIcon field="Related Plants" />
+                    </div>
+                    <p className="mt-2 text-blue-900">{plant?.raw?.["Related Plants"] || "Not specified"}</p>
+                  </div>
+
+                  <div className="rounded-2xl border border-orange-100 bg-orange-50 p-5 shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-orange-900 flex gap-2 items-center text-lg">
+                        <Sprout size={20} /> Advantages
+                      </h3>
+                      <EditIcon field="Advantages" />
+                    </div>
+                    <p className="mt-2 text-orange-900">{plant?.advantages || "Not specified"}</p>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-red-100 bg-red-50 p-6 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-bold text-red-900 flex gap-2 items-center text-lg">
+                      <ShieldAlert size={20} /> Side Effects / Caution
+                    </h3>
+                    <EditIcon field="Side Effects" />
+                  </div>
+                  <p className="mt-2 text-red-900">{plant?.sideEffects || "Not specified"}</p>
+                </div>
+
+                <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-bold text-gray-900 flex gap-2 items-center text-lg">
+                      <Info size={20} /> Description
+                    </h3>
+                    <EditIcon field="Description" />
+                  </div>
+                  <p className="mt-2 text-gray-700 text-justify">{plant?.description || "Not specified"}</p>
+
+                  <div className="mt-6 border-t pt-5 border-gray-100">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-gray-900 text-lg">Disadvantages</h3>
+                      <EditIcon field="Disadvantages" />
+                    </div>
+                    <p className="mt-2 text-gray-700 text-justify">{plant?.disadvantages || "Not specified"}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {zoomOpen && (
+        <div
+          className="fixed inset-0 z-[999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setZoomOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-5xl max-h-[90vh] rounded-2xl overflow-hidden border border-white/20 bg-black"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setZoomOpen(false)}
+              className="absolute top-3 right-3 z-10 inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-white/90 border border-gray-200 shadow-sm text-sm font-semibold"
+            >
+              <X size={16} /> Close
+            </button>
+
+            <img
+              src={imageFor3D}
+              alt="Zoom"
+              className="w-full h-full object-contain"
+              onError={(e) => (e.currentTarget.src = FALLBACK_IMG)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

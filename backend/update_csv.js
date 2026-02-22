@@ -4,14 +4,13 @@ const csv = require("csv-parser");
 const { createObjectCsvWriter } = require("csv-writer");
 
 const OLD_CSV_FILE = "herbal_trees_70_working.csv";
-const NEW_CSV_FILE = "herbal_trees_final.csv"; // ✅ This new file will be created
+const NEW_CSV_FILE = "herbal_trees_final.csv"; 
 
-// Same helper function used while downloading images (Windows-safe filename)
 function safeName(str) {
   return (
     String(str || "")
       .trim()
-      .replace(/[<>:"/\\|?*\x00-\x1F]/g, "") // remove illegal filename chars
+      .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
       .replace(/\s+/g, "_")
       .slice(0, 60) || "plant"
   );
@@ -20,7 +19,6 @@ function safeName(str) {
 (async () => {
   const rows = [];
 
-  // 1) Read the old CSV file
   await new Promise((resolve, reject) => {
     fs.createReadStream(OLD_CSV_FILE)
       .pipe(csv())
@@ -29,15 +27,13 @@ function safeName(str) {
       .on("end", resolve);
   });
 
-  console.log(`📄 Updating ${rows.length} rows...`);
+  console.log(` Updating ${rows.length} rows...`);
 
-  // 2) Update each row:
-  // Replace Image 1..4 URLs with local filenames (e.g., Tulsi_1.jpg)
   const updatedRows = rows.map((row) => {
     const name = safeName(row["Common Name"]);
 
     return {
-      ...row, // keep all other columns the same (Description, Uses, etc.)
+      ...row,
       "Image 1": `${name}_1.jpg`,
       "Image 2": `${name}_2.jpg`,
       "Image 3": `${name}_3.jpg`,
@@ -45,7 +41,6 @@ function safeName(str) {
     };
   });
 
-  // 3) Save the updated data into a new CSV file
   const headers = Object.keys(updatedRows[0]).map((key) => ({
     id: key,
     title: key,
@@ -58,6 +53,6 @@ function safeName(str) {
 
   await csvWriter.writeRecords(updatedRows);
 
-  console.log(`\n✅ Success! New file created: ${NEW_CSV_FILE}`);
-  console.log("👉 Now use 'herbal_trees_final.csv' in your app/seed script.");
+  console.log(`\n Success! New file created: ${NEW_CSV_FILE}`);
+  console.log(" Now use 'herbal_trees_final.csv' in your app/seed script.");
 })();

@@ -5,17 +5,15 @@ import { KeyRound, Mail, Lock, CheckCircle, Leaf, AlertCircle, ArrowLeft } from 
 
 function ForgotPassword() {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1); // 1: Email Form, 2: OTP & New Password
+  const [step, setStep] = useState(1); 
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // ✅ IP Address (PC ke liye localhost)
   const BASE_URL = 'http://localhost:5000';
 
-  // Step 1: Send OTP
   const handleSendOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -23,7 +21,6 @@ function ForgotPassword() {
     
     try {
       await axios.post(`${BASE_URL}/api/auth/forgot-password`, { email });
-      // alert(`OTP Sent to ${email}`);
       setStep(2);
     } catch (err) {
       setError(err.response?.data?.message || "Failed to send OTP. Try again.");
@@ -32,7 +29,6 @@ function ForgotPassword() {
     }
   };
 
-  // Step 2: Reset Password
   const handleReset = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -44,7 +40,7 @@ function ForgotPassword() {
         otp, 
         newPassword 
       });
-      alert("✅ Password Changed Successfully! Please Login.");
+      alert(" Password Changed Successfully! Please Login.");
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || "Failed to reset password.");
@@ -56,7 +52,6 @@ function ForgotPassword() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-50 to-green-100 p-4 font-sans relative overflow-hidden">
       
-      {/* --- BACKGROUND DESIGN START (Same as Login/Signup) --- */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
       <div className="absolute top-0 right-0 w-64 h-64 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
       
@@ -72,12 +67,9 @@ function ForgotPassword() {
         </h1>
         <p className="text-green-700 mt-2 font-medium">Nature's Best Healing</p>
       </div>
-      {/* --- BACKGROUND DESIGN END --- */}
-
-      {/* --- MAIN CARD --- */}
+   
       <div className="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-2xl w-full max-w-md border border-white z-10">
         
-        {/* Error Message Display */}
         {error && (
           <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-xl text-sm text-center flex items-center justify-center gap-2 border border-red-200">
             <AlertCircle size={16}/> {error}
@@ -85,7 +77,6 @@ function ForgotPassword() {
         )}
 
         {step === 1 ? (
-          /* --- STEP 1: ENTER EMAIL --- */
           <div className="animate-in fade-in slide-in-from-left-4 duration-500">
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">Reset Password</h2>
             <p className="text-gray-500 text-center text-sm mb-6">Enter your email to receive a reset code.</p>
@@ -111,7 +102,6 @@ function ForgotPassword() {
             </form>
           </div>
         ) : (
-          /* --- STEP 2: VERIFY OTP & NEW PASSWORD --- */
           <div className="animate-in fade-in slide-in-from-right-8 duration-500">
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">Create New Password</h2>
             <p className="text-gray-500 text-center text-sm mb-6">Code sent to <span className="font-bold text-green-700">{email}</span></p>
@@ -155,7 +145,6 @@ function ForgotPassword() {
           </div>
         )}
 
-        {/* Back to Login Link */}
         <div className="mt-6 text-center border-t border-gray-100 pt-4">
            <Link to="/login" className="text-gray-500 hover:text-green-700 flex items-center justify-center gap-2 font-medium transition-colors">
              <ArrowLeft size={16}/> Back to Login

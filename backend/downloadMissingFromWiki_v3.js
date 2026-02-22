@@ -8,7 +8,6 @@ const MISSING_FILE = path.join(__dirname, "missing_images.json");
 const TIMEOUT_MS = 30000;
 const PER_ITEM_DELAY_MS = 1200;
 
-// ✅ USER AGENT (FIXED WITH YOUR EMAIL)
 const USER_AGENT =
   "VirtualHerbalGardenBot/1.0 (contact: back2tocampus@gmail.com) Node.js";
 
@@ -35,7 +34,6 @@ function fileAlreadyExists(baseOutName) {
   return fs.readdirSync(IMAGE_DIR).some((f) => f.startsWith(baseOutName + "."));
 }
 
-// ===== Wikipedia API Helper (with User-Agent) =====
 async function wikiGET(params) {
   const url = "https://en.wikipedia.org/w/api.php";
   const r = await axios.get(url, {
@@ -139,7 +137,6 @@ async function getFirstPageImage(title) {
   return page2?.imageinfo?.[0]?.url || "";
 }
 
-// ===== Image Download (with User-Agent) =====
 async function downloadImage(url) {
   const res = await axios.get(url, {
     responseType: "arraybuffer",
@@ -154,17 +151,16 @@ async function downloadImage(url) {
   };
 }
 
-// ===== MAIN =====
 (async () => {
   if (!fs.existsSync(IMAGE_DIR)) fs.mkdirSync(IMAGE_DIR, { recursive: true });
 
   if (!fs.existsSync(MISSING_FILE)) {
-    console.log("❌ missing_images.json not found. Run: node checkMissingImages.js");
+    console.log(" missing_images.json not found. Run: node checkMissingImages.js");
     process.exit(1);
   }
 
   const missing = JSON.parse(fs.readFileSync(MISSING_FILE, "utf-8"));
-  console.log(`🧾 Missing items: ${missing.length}`);
+  console.log(` Missing items: ${missing.length}`);
 
   let ok = 0;
   let fail = 0;
@@ -178,11 +174,11 @@ async function downloadImage(url) {
 
     const baseOutName = `${plantSafe}_${slot}`;
     if (fileAlreadyExists(baseOutName)) {
-      console.log(`⏭️ Exists: ${baseOutName}.*`);
+      console.log(` Exists: ${baseOutName}.*`);
       continue;
     }
 
-    console.log(`\n🌿 [${i + 1}/${missing.length}] ${plant} -> ${baseOutName}.*`);
+    console.log(`\n [${i + 1}/${missing.length}] ${plant} -> ${baseOutName}.*`);
 
     try {
       const title = await pickBestTitle(plant);
@@ -199,10 +195,10 @@ async function downloadImage(url) {
         ".jpg";
 
       fs.writeFileSync(path.join(IMAGE_DIR, `${baseOutName}${ext}`), buffer);
-      console.log(`✅ Saved: ${baseOutName}${ext} (from ${title})`);
+      console.log(` Saved: ${baseOutName}${ext} (from ${title})`);
       ok++;
     } catch (e) {
-      console.log(`❌ Failed: ${baseOutName} -> ${e.message}`);
+      console.log(` Failed: ${baseOutName} -> ${e.message}`);
       fail++;
     }
 
@@ -210,8 +206,8 @@ async function downloadImage(url) {
   }
 
   console.log("\n============================");
-  console.log("🎉 DONE");
-  console.log("✅ Downloaded:", ok);
-  console.log("❌ Still failed:", fail);
+  console.log(" DONE");
+  console.log(" Downloaded:", ok);
+  console.log(" Still failed:", fail);
   console.log("============================");
 })();

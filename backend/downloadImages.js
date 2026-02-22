@@ -3,17 +3,15 @@ const path = require("path");
 const csv = require("csv-parser");
 const https = require("https");
 const http = require("http");
-const gis = require("g-i-s"); // 📦 Naya Library
+const gis = require("g-i-s");
 
 const CSV_FILE = "herbal_trees_70_working.csv";
 const IMAGE_DIR = path.join(__dirname, "images");
 
-// Ensure folder exists
 if (!fs.existsSync(IMAGE_DIR)) {
   fs.mkdirSync(IMAGE_DIR, { recursive: true });
 }
 
-// ======== Helpers ========
 
 function safeName(str) {
   return String(str || "")
@@ -25,12 +23,11 @@ function safeName(str) {
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// Google Image Search ko Promise mein convert karna
 function searchImages(query) {
   return new Promise((resolve, reject) => {
     gis(query, (error, results) => {
       if (error) return reject(error);
-      resolve(results.slice(0, 4)); // Top 4 images uthao
+      resolve(results.slice(0, 4)); 
     });
   });
 }
@@ -62,11 +59,9 @@ function downloadToFile(url, filePath) {
   });
 }
 
-// ======== Main Script ========
 (async () => {
   const rows = [];
 
-  // 1. CSV Read karo
   await new Promise((resolve, reject) => {
     fs.createReadStream(CSV_FILE)
       .pipe(csv())
@@ -75,46 +70,42 @@ function downloadToFile(url, filePath) {
       .on("end", resolve);
   });
 
-  console.log(`📄 CSV Loaded: ${rows.length} plants found.`);
-  console.log("🔍 Searching and downloading images directly from Google...");
+  console.log(` CSV Loaded: ${rows.length} plants found.`);
+  console.log(" Searching and downloading images directly from Google...");
 
-  // 2. Har Plant ke liye search aur download karo
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i];
     const name = safeName(row["Common Name"] || `plant_${i + 1}`);
-    const searchTerm = `${row["Common Name"]} plant`; // Search query: "Tulsi plant", etc.
+    const searchTerm = `${row["Common Name"]} plant`;
 
-    console.log(`\n🌿 [${i + 1}/${rows.length}] Processing: ${name}...`);
+    console.log(`\n [${i + 1}/${rows.length}] Processing: ${name}...`);
 
     try {
-      // Step A: Search Google for real URLs
       const results = await searchImages(searchTerm);
       
       if (results.length === 0) {
-        console.log(`⚠️ No images found for ${name}`);
+        console.log(` No images found for ${name}`);
         continue;
       }
 
-      // Step B: Download the found images
       const downloadPromises = results.map((imgData, index) => {
-        const ext = path.extname(imgData.url).split("?")[0] || ".jpg"; // Get extension or default to jpg
+        const ext = path.extname(imgData.url).split("?")[0] || ".jpg";
         const filename = `${name}_${index + 1}${ext}`;
         const filePath = path.join(IMAGE_DIR, filename);
 
         return downloadToFile(imgData.url, filePath)
-          .then(() => console.log(`  ✅ Saved: ${filename}`))
-          .catch((err) => console.log(`  ❌ Failed (${filename}): ${err.message}`));
+          .then(() => console.log(`   Saved: ${filename}`))
+          .catch((err) => console.log(`  Failed (${filename}): ${err.message}`));
       });
 
       await Promise.all(downloadPromises);
 
     } catch (err) {
-      console.error(`❌ Search Failed for ${name}:`, err.message);
+      console.error(` Search Failed for ${name}:`, err.message);
     }
 
-    // ⏳ Thoda wait karo taaki Google block na kare
     await sleep(2000); 
   }
 
-  console.log("\n🎉 ALL DONE!");
+  console.log("\n ALL DONE!");
 })();

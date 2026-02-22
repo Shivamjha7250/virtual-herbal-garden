@@ -1,36 +1,38 @@
 const mongoose = require("mongoose");
 
 const PlantSchema = new mongoose.Schema({
-  // ✅ EXACT DATASET NAMES
   "Common Name": { type: String, required: true },
-  "Scientific Name": String,
+  "Scientific Name": { type: String, default: "" },
 
-  "Description": String,
+  "Description": { type: String, default: "" },
 
-  "Uses": String,
-  "Advantages": String,
-  "Disadvantages": String,
-  "Side Effects": String,
-  "Related Plants": String,
+  "Uses": { type: String, default: "" },
+  "Advantages": { type: String, default: "" },
+  "Disadvantages": { type: String, default: "" },
+  "Side Effects": { type: String, default: "" },
+  "Related Plants": { type: String, default: "" },
 
-  // Google image URLs
-  "Image 1": String,
-  "Image 2": String,
-  "Image 3": String,
-  "Image 4": String,
+  "Category": { type: String, default: "General" },
+  "Region": { type: String, default: "" },
 
-  "3D Model Link": String,
+  "Image 1": { type: String, default: "" },
+  "Image 2": { type: String, default: "" },
+  "Image 3": { type: String, default: "" },
+  "Image 4": { type: String, default: "" },
 
-  // Meta
+  "3D Model Link": { type: String, default: "" },
+
   addedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    default: null
+    default: null,
   },
 
-  isApproved: { type: Boolean, default: true },
+  isApproved: { type: Boolean, default: false },
 
-  createdAt: { type: Date, default: Date.now }
+  approvedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", default: null },
+
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Plant", PlantSchema);

@@ -13,10 +13,8 @@ function Signup() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [otp, setOtp] = useState('');
 
-  // ✅ IP Address (PC ke liye localhost)
   const BASE_URL = 'http://localhost:5000';
 
-  // Timer Logic
   useEffect(() => {
     if (timeLeft > 0) {
       const timerId = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -35,12 +33,10 @@ function Signup() {
     setError('');
   };
 
-  // Step 1: Register & Send OTP
   const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
     
-    // Basic Validation
     if (formData.password.length < 6) {
       setError("Password must be at least 6 characters long.");
       return;
@@ -50,12 +46,10 @@ function Signup() {
     try {
       console.log("Sending Data:", formData); 
 
-      // ✅ Endpoint: /register-step1
       const res = await axios.post(`${BASE_URL}/api/auth/register-step1`, formData);
       
-      // alert(res.data.message || `OTP sent to ${formData.email}`);
       setStep(2);
-      setTimeLeft(120); // 2 Minutes timer
+      setTimeLeft(120);
     } catch (err) {
       console.error("Signup Error:", err.response);
       setError(err.response?.data?.message || "Registration Failed. Check console.");
@@ -64,7 +58,6 @@ function Signup() {
     }
   };
 
-  // Step 2: Verify OTP
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     setError('');
@@ -79,7 +72,7 @@ function Signup() {
         email: formData.email,
         otp: otp
       });
-      alert(res.data.message || "✅ Verified! Login now.");
+      alert(res.data.message || " Verified! Login now.");
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || "Invalid OTP");
@@ -105,7 +98,6 @@ function Signup() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-50 to-green-100 p-4 font-sans relative overflow-hidden">
       
-      {/* --- BACKGROUND DESIGN START --- */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
       <div className="absolute top-0 right-0 w-64 h-64 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
       
@@ -121,12 +113,9 @@ function Signup() {
         </h1>
         <p className="text-green-700 mt-2 font-medium">Nature's Best Healing</p>
       </div>
-      {/* --- BACKGROUND DESIGN END --- */}
-
-      {/* --- MAIN CARD --- */}
+    
       <div className="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-2xl w-full max-w-md border border-white z-10">
         
-        {/* Error Message */}
         {error && (
           <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-xl text-sm text-center flex items-center justify-center gap-2 border border-red-200">
             <AlertCircle size={16}/> {error}
@@ -134,7 +123,6 @@ function Signup() {
         )}
         
         {step === 1 && (
-          /* --- STEP 1: REGISTRATION FORM --- */
           <div className="animate-in fade-in slide-in-from-left-4 duration-500">
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Create Account</h2>
             <form onSubmit={handleRegister} className="space-y-4">
@@ -186,7 +174,6 @@ function Signup() {
         )}
 
         {step === 2 && (
-          /* --- STEP 2: OTP VERIFICATION --- */
           <div className="animate-in fade-in slide-in-from-right-8 duration-500">
             <div className="text-center mb-6">
               <h2 className="text-2xl font-bold text-green-800 mb-2">Verify Email</h2>

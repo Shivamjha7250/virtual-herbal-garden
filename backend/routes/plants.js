@@ -8,9 +8,6 @@ const jwt = require("jsonwebtoken");
 
 const JWT_SECRET = process.env.JWT_SECRET || "herbal_garden_secret_key_123";
 
-// =====================================================
-// ✅ DATASET JSON FILE (Sync with DB)
-// =====================================================
 const DATASET_PATH = path.join(__dirname, "../data/plants.json");
 
 const ensureDatasetFile = () => {
@@ -36,7 +33,6 @@ const writeDataset = (arr) => {
   fs.writeFileSync(DATASET_PATH, JSON.stringify(arr, null, 2));
 };
 
-// ✅ Plant doc (legacy keys in DB) -> dataset record
 const toDatasetRecord = (p) => ({
   id: String(p._id),
 
@@ -50,7 +46,9 @@ const toDatasetRecord = (p) => ({
   "Side Effects": p["Side Effects"] || "",
   "Related Plants": p["Related Plants"] || "",
 
-  // store as public url path
+  "Category": p["Category"] || "General",
+  "Region": p["Region"] || "",
+
   "Image 1": p["Image 1"] ? `/images/${p["Image 1"]}` : "",
   "Image 2": p["Image 2"] ? `/images/${p["Image 2"]}` : "",
   "Image 3": p["Image 3"] ? `/images/${p["Image 3"]}` : "",
@@ -78,9 +76,6 @@ const deleteFromDataset = (id) => {
   writeDataset(dataset.filter((x) => String(x.id) !== String(id)));
 };
 
-// =====================================================
-// 🔒 AUTH MIDDLEWARES
-// =====================================================
 const verifyToken = (req, res, next) => {
   const tokenHeader = req.header("Authorization");
   if (!tokenHeader) return res.status(401).json({ message: "Access Denied. Login Required." });
@@ -100,9 +95,6 @@ const verifyAdmin = (req, res, next) => {
   return res.status(403).json({ message: "Access Denied. Admins only." });
 };
 
-// =====================================================
-// 📸 MULTER CONFIG (Image Upload)
-// =====================================================
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const dir = path.join(__dirname, "../images");
@@ -116,7 +108,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// ✅ For update: image1..image4
 const uploadPlantImages = upload.fields([
   { name: "image1", maxCount: 1 },
   { name: "image2", maxCount: 1 },
@@ -124,25 +115,22 @@ const uploadPlantImages = upload.fields([
   { name: "image4", maxCount: 1 },
 ]);
 
-// ✅ JSON + multipart both accepted
 const maybeUploadPlantImages = (req, res, next) => {
   const ct = req.headers["content-type"] || "";
   if (ct.includes("multipart/form-data")) return uploadPlantImages(req, res, next);
   return next();
 };
 
-// ✅ delete file safely
 const deleteImageIfExists = (filename) => {
   if (!filename) return;
   const fullPath = path.join(__dirname, "../images", filename);
   if (fs.existsSync(fullPath)) {
-    try { fs.unlinkSync(fullPath); } catch (e) {}
+    try {
+      fs.unlinkSync(fullPath);
+    } catch (e) {}
   }
 };
 
-// =====================================================
-// 🔁 FIELD MAPPING (NEW -> OLD keys)
-// =====================================================
 const NEW_TO_OLD = {
   commonName: "Common Name",
   scientificName: "Scientific Name",
@@ -153,13 +141,10 @@ const NEW_TO_OLD = {
   sideEffects: "Side Effects",
   relatedPlants: "Related Plants",
   threeDModelLink: "3D Model Link",
+  category: "Category",
+  region: "Region",
 };
 
-// =====================================================
-// 🌐 PUBLIC ROUTES
-// =====================================================
-
-// 1) Get All Approved Plants
 router.get("/", async (req, res) => {
   try {
     const plants = await Plant.find({ isApproved: true });
@@ -169,11 +154,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// =====================================================
-// 🔒 ADMIN ROUTES (MUST BE BEFORE "/:id")
-// =====================================================
-
-// 2) Get Pending Plants (Admin)
 router.get("/admin/pending", verifyToken, verifyAdmin, async (req, res) => {
   try {
     const plants = await Plant.find({ isApproved: false });
@@ -183,7 +163,6 @@ router.get("/admin/pending", verifyToken, verifyAdmin, async (req, res) => {
   }
 });
 
-// 3) Approve Plant (Admin)
 router.put("/admin/approve/:id", verifyToken, verifyAdmin, async (req, res) => {
   try {
     const plant = await Plant.findById(req.params.id);
@@ -193,8 +172,6 @@ router.put("/admin/approve/:id", verifyToken, verifyAdmin, async (req, res) => {
     plant.approvedBy = req.user.id;
 
     const updated = await plant.save();
-
-    // ✅ dataset sync
     upsertDatasetPlant(updated);
 
     res.json({ message: "Approved successfully!", plant: updated });
@@ -203,19 +180,16 @@ router.put("/admin/approve/:id", verifyToken, verifyAdmin, async (req, res) => {
   }
 });
 
-// 4) ✅ UPDATE Plant (Admin) — updates DB legacy keys + dataset
 router.put("/admin/update/:id", verifyToken, verifyAdmin, maybeUploadPlantImages, async (req, res) => {
   try {
     const plant = await Plant.findById(req.params.id);
     if (!plant) return res.status(404).json({ message: "Plant not found" });
 
-    // ✅ Save new keys into OLD keys
     Object.entries(NEW_TO_OLD).forEach(([newKey, oldKey]) => {
       if (req.body[newKey] !== undefined) plant[oldKey] = req.body[newKey];
       if (req.body[oldKey] !== undefined) plant[oldKey] = req.body[oldKey];
     });
 
-    // ✅ Replace images if provided
     const files = req.files || {};
 
     if (files.image1?.[0]) {
@@ -236,8 +210,6 @@ router.put("/admin/update/:id", verifyToken, verifyAdmin, maybeUploadPlantImages
     }
 
     const updated = await plant.save();
-
-    // ✅ dataset sync
     upsertDatasetPlant(updated);
 
     res.json({ message: "Updated successfully!", plant: updated });
@@ -247,20 +219,55 @@ router.put("/admin/update/:id", verifyToken, verifyAdmin, maybeUploadPlantImages
   }
 });
 
-// =====================================================
-// 🔒 ADD PLANT (User/Admin) (Login Required)
-// =====================================================
+router.put("/admin/category/:id", verifyToken, verifyAdmin, async (req, res) => {
+  try {
+    const { category, region } = req.body;
 
-// 5) Add Plant (images[] max 4) — stores in legacy keys + dataset
+    const plant = await Plant.findById(req.params.id);
+    if (!plant) return res.status(404).json({ message: "Plant not found" });
+
+    if (category !== undefined) plant["Category"] = category;
+    if (region !== undefined) plant["Region"] = region;
+
+    const updated = await plant.save();
+
+    try {
+      upsertDatasetPlant(updated);
+    } catch (e) {
+      
+    }
+
+    res.json({ message: "Category updated", plant: updated });
+  } catch (err) {
+    console.error("CATEGORY UPDATE ERROR:", err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 router.post("/", verifyToken, upload.array("images", 4), async (req, res) => {
   try {
     const files = req.files || [];
     const isAdmin = req.user.role === "admin";
 
+    const commonName =
+      req.body.commonName ||
+      req.body.name ||
+      req.body["Common Name"] ||
+      "";
+
+    const scientificName =
+      req.body.scientificName ||
+      req.body.botanicalName ||
+      req.body["Scientific Name"] ||
+      "";
+
+    if (!String(commonName).trim()) {
+      return res.status(400).json({ message: "Plant name is required." });
+    }
+
     const newPlant = new Plant({
-      // ✅ store in legacy keys
-      "Common Name": req.body.commonName || req.body["Common Name"] || "",
-      "Scientific Name": req.body.scientificName || req.body["Scientific Name"] || "",
+      "Common Name": commonName,
+      "Scientific Name": scientificName,
       "Description": req.body.description || req.body["Description"] || "",
 
       "Uses": req.body.uses || req.body["Uses"] || "",
@@ -268,6 +275,9 @@ router.post("/", verifyToken, upload.array("images", 4), async (req, res) => {
       "Disadvantages": req.body.disadvantages || req.body["Disadvantages"] || "",
       "Side Effects": req.body.sideEffects || req.body["Side Effects"] || "",
       "Related Plants": req.body.relatedPlants || req.body["Related Plants"] || "",
+
+      "Category": req.body.category || req.body["Category"] || "General",
+      "Region": req.body.region || req.body["Region"] || "",
 
       "Image 1": files[0] ? files[0].filename : "",
       "Image 2": files[1] ? files[1].filename : "",
@@ -277,13 +287,12 @@ router.post("/", verifyToken, upload.array("images", 4), async (req, res) => {
       "3D Model Link": req.body.threeDModelLink || req.body["3D Model Link"] || "",
 
       addedBy: req.user.id,
+
       isApproved: isAdmin,
       approvedBy: isAdmin ? req.user.id : null,
     });
 
     const saved = await newPlant.save();
-
-    // ✅ dataset sync
     upsertDatasetPlant(saved);
 
     res.status(201).json(saved);
@@ -293,9 +302,6 @@ router.post("/", verifyToken, upload.array("images", 4), async (req, res) => {
   }
 });
 
-// =====================================================
-// 🌿 PUBLIC: Get Single Plant (KEEP AFTER ADMIN ROUTES)
-// =====================================================
 router.get("/:id", async (req, res) => {
   try {
     const plant = await Plant.findById(req.params.id);
@@ -306,7 +312,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// 6) Delete Plant (Admin) — deletes DB + images + dataset
 router.delete("/:id", verifyToken, verifyAdmin, async (req, res) => {
   try {
     const plant = await Plant.findById(req.params.id);
@@ -318,8 +323,6 @@ router.delete("/:id", verifyToken, verifyAdmin, async (req, res) => {
     deleteImageIfExists(plant["Image 4"]);
 
     await Plant.findByIdAndDelete(req.params.id);
-
-    // ✅ dataset delete
     deleteFromDataset(req.params.id);
 
     res.json({ message: "Deleted successfully!" });

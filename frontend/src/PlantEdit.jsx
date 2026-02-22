@@ -4,7 +4,6 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:5000";
 
-// ✅ UI labels (normalized keys)
 const FIELD_LABELS = {
   commonName: "Common Name",
   scientificName: "Scientific Name",
@@ -17,7 +16,6 @@ const FIELD_LABELS = {
   threeDModelLink: "3D Model Link",
 };
 
-// ✅ old dataset keys -> normalized keys
 const normalizeField = (f) => {
   const x = (f || "").trim();
   const map = {
@@ -34,7 +32,6 @@ const normalizeField = (f) => {
   return map[x] || x;
 };
 
-// ✅ normalized -> old dataset keys (for reading old DB docs)
 const NEW_TO_OLD = {
   commonName: "Common Name",
   scientificName: "Scientific Name",
@@ -55,7 +52,6 @@ export default function PlantEdit() {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
 
-  // ✅ query param: ?field=Description OR ?field=description
   const queryField = useMemo(() => {
     const params = new URLSearchParams(location.search);
     return normalizeField(params.get("field") || "");
@@ -67,15 +63,13 @@ export default function PlantEdit() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    // ✅ block non-admin
     if (!user || user.role !== "admin") {
       alert("Not authorized (Admin only).");
       navigate(-1);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 
-  // ✅ Always fetch latest plant (so edit always shows latest DB data)
   useEffect(() => {
     const init = async () => {
       try {
@@ -92,7 +86,6 @@ export default function PlantEdit() {
     init();
   }, [id]);
 
-  // ✅ Set textarea value (supports NEW + OLD keys)
   useEffect(() => {
     if (!plant) return;
 
@@ -114,7 +107,6 @@ export default function PlantEdit() {
     }
     if (!plant) return;
 
-    // ✅ only allow these fields
     const allowedFields = new Set([
       "commonName",
       "scientificName",
@@ -142,13 +134,12 @@ export default function PlantEdit() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      alert("✅ Updated successfully!");
+      alert(" Updated successfully!");
 
-      // ✅ clean navigation (no state passing)
       navigate(`/plant/${plant._id}`);
     } catch (e) {
       console.error(e);
-      alert(e?.response?.data?.message || "❌ Update failed. Check console / backend PUT route.");
+      alert(e?.response?.data?.message || " Update failed. Check console / backend PUT route.");
     } finally {
       setSaving(false);
     }

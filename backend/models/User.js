@@ -7,13 +7,10 @@ const UserSchema = new mongoose.Schema({
   role: { type: String, default: 'user' }, 
   profilePhoto: { type: String, default: '' },
   
-  // ✅ Favorites (Plants ki list)
   favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Plant' }], 
   
-  // ✅ History (Plants ki list - Latest viewed first)
   history: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Plant' }],
 
-  // ✅ OTP & Verification
   otp: { type: String },
   otpExpires: { type: Date },
   isVerified: { type: Boolean, default: false },

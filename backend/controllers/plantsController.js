@@ -1,6 +1,5 @@
 const Plant = require('../models/Plant');
 
-// GET /api/plants
 exports.getPlants = async (req, res) => {
   try {
     const plants = await Plant.find();
@@ -10,7 +9,6 @@ exports.getPlants = async (req, res) => {
   }
 };
 
-// GET /api/plants/:id
 exports.getPlantById = async (req, res) => {
   try {
     const plant = await Plant.findById(req.params.id);
@@ -21,7 +19,6 @@ exports.getPlantById = async (req, res) => {
   }
 };
 
-// POST /api/plants
 exports.addPlant = async (req, res) => {
   try {
     const plant = new Plant(req.body);

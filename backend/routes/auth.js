@@ -8,7 +8,6 @@ const mongoose = require('mongoose');
 const Plant = require('../models/Plant');
 const JWT_SECRET = process.env.JWT_SECRET || 'herbal_garden_secret_key_123';
 
-// Email Configuration
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -17,9 +16,8 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Helper: Send OTP
 const sendOtp = async (email, otp) => {
-  console.log(`🔐 OTP for ${email}: ${otp}`);
+  console.log(`OTP for ${email}: ${otp}`);
   const mailOptions = {
     from: `"Virtual Herbal Garden" <${process.env.EMAIL_USER}>`,
     to: email,
@@ -28,15 +26,11 @@ const sendOtp = async (email, otp) => {
   };
   try {
     await transporter.sendMail(mailOptions);
-    console.log("✅ Email sent.");
+    console.log(" Email sent.");
   } catch (error) {
-    console.log("⚠️ Email failed. Check console for OTP.");
+    console.log(" Email failed. Check console for OTP.");
   }
 };
-
-// ==========================================
-// 1. SIGNUP FLOW
-// ==========================================
 
 router.post('/register-step1', async (req, res) => {
   try {
@@ -81,20 +75,15 @@ router.post('/verify-otp', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
-// ==========================================
-// 2. LOGIN FLOW (REAL ADMIN CREATION)
-// ==========================================
-
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // ✅ ADMIN LOGIC: Create Real DB User if not exists
     if (email === 'admin@herbal.com') {
       let adminUser = await User.findOne({ email: 'admin@herbal.com' });
 
       if (!adminUser) {
-        console.log("⚠️ Creating Admin in Database...");
+        console.log(" Creating Admin in Database...");
         const hashedPassword = await bcrypt.hash('123456', 10); 
         adminUser = await User.create({
           name: 'Super Admin',
@@ -123,7 +112,6 @@ router.post('/login', async (req, res) => {
       });
     }
 
-    // --- NORMAL USER LOGIC ---
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: "User not found" });
     if (!user.isVerified) return res.status(400).json({ message: "Verify OTP first." });
@@ -157,9 +145,6 @@ router.post('/login-verify', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
-// ==========================================
-// 3. FORGOT PASSWORD & OTHERS
-// ==========================================
 
 router.post('/forgot-password', async (req, res) => {
   try {
@@ -222,41 +207,32 @@ router.get('/user/:id', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
-// ✅✅✅ THE ULTIMATE HISTORY FIX ✅✅✅
 router.put('/history', async (req, res) => {
   const { userId, plantId } = req.body;
   
   if (!userId || !plantId) return res.status(400).json({ message: "Missing Data" });
 
-  // Safety Check
   if (!mongoose.Types.ObjectId.isValid(userId)) return res.status(400).json({ message: "Invalid User ID" });
 
   try {
-    // 1. User ko fetch karo
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    // 2. Current History ko Strings mein convert karo (Comparison ke liye)
     let historyIds = user.history.map(id => id.toString());
 
-    // 3. Agar plant pehle se hai, to usse REMOVE karo (Taaki duplicate na bane)
     historyIds = historyIds.filter(id => id !== plantId);
 
-    // 4. Ab naye plant ko TOP par add karo
     historyIds.unshift(plantId);
 
-    // 5. [Double Safety] 'Set' ka use karke ensure karo ki sab Unique hain
     const uniqueHistory = [...new Set(historyIds)];
 
-    // 6. Size Limit (Max 50)
     const finalHistory = uniqueHistory.slice(0, 50);
 
-    // 7. Update User (Direct DB update to avoid version errors)
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       { history: finalHistory },
       { new: true }
-    ).populate('history'); // Populate karke return karo
+    ).populate('history');
 
     res.json(updatedUser.history);
 
@@ -266,14 +242,10 @@ router.put('/history', async (req, res) => {
   }
 });
 
-// ✅✅✅ GET ADMIN APPROVED PLANTS ROUTE ✅✅✅
 router.get('/admin/approved-plants', async (req, res) => {
   try {
-    // Yahan hum Database se saare Plants mangwa rahe hain
-    // Agar aapke paas 'isApproved: true' wala field hai to: Plant.find({ isApproved: true }) likhein
     const plants = await Plant.find({}); 
     
-    // Naye plants pehle dikhane ke liye reverse karein
     res.json(plants.reverse()); 
   } catch (err) {
     console.error("Admin Plants Error:", err);
